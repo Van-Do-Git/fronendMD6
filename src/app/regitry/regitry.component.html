@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <p *ngIf="alert">{{alert}}</p>
+    <div class="col-12" style="margin-top: 20px">
+      <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">UserName</label>
+          <input formControlName="username" type="text" class="form-control" id="exampleFormControlInput1">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput2" class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="exampleFormControlInput2">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput3" class="form-label">Re-Password</label>
+          <input formControlName="re_password" type="password" class="form-control" id="exampleFormControlInput3">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput4" class="form-label">Phone Number</label>
+          <input formControlName="phoneNumber" type="text" class="form-control" id="exampleFormControlInput4">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput5" class="form-label">Full Name</label>
+          <input formControlName="fullName" type="text" class="form-control" id="exampleFormControlInput5">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput6" class="form-label">Email</label>
+          <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput6">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea7" class="form-label">Address</label>
+          <input formControlName="address" class="form-control" id="exampleFormControlTextarea7">
+        </div>
+        <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Create</button>
+      </form>
+    </div>
+  </div>
+</div>
+
