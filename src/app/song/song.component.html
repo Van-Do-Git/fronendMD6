@@ -1,0 +1,28 @@
+<div class="container">
+  <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter name song</mat-label>
+        <input matInput placeholder="Name song" formControlName="name">
+        <mat-error >Name song requiered!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter name singer</mat-label>
+        <input matInput placeholder="Name singer" formControlName="singer" >
+            <mat-error >Singer requiered!</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <input type="hidden" formControlName="path" value="{{downloadURL}}">
+    <input type="hidden" formControlName="count" value="0">
+    <input type="file" (change)="onFileChanged($event)" *ngIf="!downloadURL">
+    <mat-progress-bar *ngIf="checkUploadFile" mode="indeterminate"></mat-progress-bar>
+    <br/>
+    <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Create</button>
+  </form>
+</div>
+

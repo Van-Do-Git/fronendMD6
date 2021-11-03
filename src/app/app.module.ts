@@ -15,6 +15,14 @@ import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {httpInterceptorProviders} from "./security/token.interceptor";
+import {MatSliderModule} from "@angular/material/slider";
+import {SongComponent} from './song/song.component';
+import {AngularFireStorage, AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -23,18 +31,25 @@ import {httpInterceptorProviders} from "./security/token.interceptor";
     NavbarComponent,
     FooterComponent,
     RegitryComponent,
-    LoginComponent
+    LoginComponent,
+    SongComponent
   ],
   imports: [
+    MatInputModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSliderModule,
+    MatProgressBarModule,
+    MatFormFieldModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

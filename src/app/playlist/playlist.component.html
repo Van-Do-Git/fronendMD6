@@ -4,19 +4,6 @@
 <div class="player" >
   <!-- Dashboard -->
   <div class="dashboard">
-    <!-- Header -->
-    <header>
-      <h4>Now playing:</h4>
-      <h2>String 57th & 9th</h2>
-    </header>
-
-    <!-- CD -->
-    <div class="cd">
-      <div class="cd-thumb">
-      </div>
-    </div>
-
-    <!-- Control -->
     <div class="control" >
       <div class="btn btn-repeat">
         <mat-icon>repeat</mat-icon>
@@ -25,7 +12,7 @@
         <mat-icon>skip_previous</mat-icon>
       </div>
       <div class="btn btn-prev">
-        <mat-icon>play_circle_outline</mat-icon>
+        <mat-icon (click)="play()">play_circle_outline</mat-icon>
       </div>
       <div class="btn btn-next">
         <mat-icon>skip_next</mat-icon>
@@ -34,10 +21,9 @@
         <mat-icon>shuffle</mat-icon>
       </div>
     </div>
-
-    <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-
-    <audio id="audio" [src]="currentSong" #audioElement autoplay></audio>
+    <div class="slidecontainer">
+      <input type="range" min="0" max="{{totalTime}}" value="{{currentTime}}" class="slider" #myRange (input)="setProsess(myRange)">
+    </div>
   </div>
 
   <div class="playlist" >
