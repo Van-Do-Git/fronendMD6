@@ -22,6 +22,6 @@ export class MusicService {
     return this.http.post<any>(this.API_SONG+"/create", song);
   }
   getMySongList(idAccount:number):Observable<any>{
-    return this.http.get<any>(this.API_SONG+"/songs/+");
+    return this.http.get<any>(this.API_SONG+"/songs/"+idAccount);
   }
 }
