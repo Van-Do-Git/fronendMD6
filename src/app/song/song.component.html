@@ -1,28 +1,26 @@
 <div class="container">
-  <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
-    <div class="example-container">
-      <mat-form-field appearance="fill">
-        <mat-label>Enter name song</mat-label>
-        <input matInput placeholder="Name song" formControlName="name">
-        <mat-error >Name song requiered!</mat-error>
-      </mat-form-field>
+  <div class="row">
+    <div class="col-12" style="margin-top: 20px">
+      <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Name Song</label>
+          <input formControlName="name" type="text" class="form-control" id="exampleFormControlInput1">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput2" class="form-label">Name Singer</label>
+          <input formControlName="singer" type="text" class="form-control" id="exampleFormControlInput2">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">File mp3</label>
+          <input formControlName="path" type="text" [(ngModel)]="downloadURL" style="display: none">
+          <input formControlName="count" type="number" [(ngModel)]="count" style="display: none">
+          <input formControlName="idAccount" type="number" [(ngModel)]="idAccounts" style="display: none">
+          <input type="file" class="form-control" (change)="onFileChanged($event)" accept="audio/*">
+          <mat-progress-bar *ngIf="checkUploadFile" mode="indeterminate"></mat-progress-bar>
+        </div>
+        <br>
+        <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Create</button>
+      </form>
     </div>
-
-    <div class="example-container">
-      <mat-form-field appearance="fill">
-        <mat-label>Enter name singer</mat-label>
-        <input matInput placeholder="Name singer" formControlName="singer" >
-            <mat-error >Singer requiered!</mat-error>
-      </mat-form-field>
-    </div>
-
-
-    <input type="hidden" formControlName="path" value="{{downloadURL}}">
-    <input type="hidden" formControlName="count" value="0">
-    <input type="file" (change)="onFileChanged($event)" *ngIf="!downloadURL">
-    <mat-progress-bar *ngIf="checkUploadFile" mode="indeterminate"></mat-progress-bar>
-    <br/>
-    <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Create</button>
-  </form>
+  </div>
 </div>
-

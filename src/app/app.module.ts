@@ -23,6 +23,7 @@ import {environment} from "../environments/environment";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { SonglistComponent } from './songlist/songlist.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {MatInputModule} from "@angular/material/input";
     FooterComponent,
     RegitryComponent,
     LoginComponent,
-    SongComponent
+    SongComponent,
+    SonglistComponent
   ],
   imports: [
     MatInputModule,
