@@ -33,13 +33,18 @@ export class MusicService {
   }
 
   getSongLatest(): Observable<any> {
-    return this.http.get<any>(this.API_CLIENT+'/latest');
+    return this.http.get<any>(this.API_CLIENT + '/latest');
   }
+
   getSongCount(): Observable<any> {
-    return this.http.get<any>(this.API_CLIENT+'/count');
+    return this.http.get<any>(this.API_CLIENT + '/count');
   }
+
   getSongLikes(): Observable<any> {
-    return this.http.get<any>(this.API_CLIENT+'/likes');
+    return this.http.get<any>(this.API_CLIENT + '/likes');
   }
-  public currentSong$ = new BehaviorSubject<string>("")
+
+  updateSong(song:any): Observable<any> {
+    return this.http.put<any>(this.API_CLIENT + '/upadateSong',song);
+  }
 }

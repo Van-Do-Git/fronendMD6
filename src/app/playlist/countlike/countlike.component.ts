@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MusicService} from "../../service/music.service";
 import {MatTableDataSource} from "@angular/material/table";
@@ -14,6 +14,7 @@ export class CountlikeComponent implements OnInit,AfterViewInit {
   songlist: any;
 
   @ViewChild(MatPaginator) paginator: any;
+  @Output() eventEmitter = new EventEmitter();
 
   constructor(private musicServiec: MusicService) {
 
@@ -29,5 +30,8 @@ export class CountlikeComponent implements OnInit,AfterViewInit {
       this.dataSource = new MatTableDataSource<any>(this.songlist);
     })
     this.dataSource.paginator = this.paginator;
+  }
+  playCurrent(song: any) {
+    this.eventEmitter.emit(song);
   }
 }

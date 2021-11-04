@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MusicService} from "../../service/music.service";
 import {MatTableDataSource} from "@angular/material/table";
@@ -14,6 +14,7 @@ export class LatestComponent implements OnInit, AfterViewInit {
   songlist: any;
 
   @ViewChild(MatPaginator) paginator: any;
+  @Output() eventEmitter = new EventEmitter();
 
   constructor(private musicServiec: MusicService) {
 
@@ -30,5 +31,8 @@ export class LatestComponent implements OnInit, AfterViewInit {
     })
     this.dataSource.paginator = this.paginator;
 
+  }
+  playCurrent(song: any) {
+    this.eventEmitter.emit(song);
   }
 }

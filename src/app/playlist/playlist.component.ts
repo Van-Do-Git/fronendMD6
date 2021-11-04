@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MusicService} from "../service/music.service";
+import {Song} from "../../model/song";
 
 
 @Component({
@@ -9,17 +10,14 @@ import {MusicService} from "../service/music.service";
 })
 
 export class PlaylistComponent implements OnInit, OnDestroy, AfterViewInit {
-  urlSong: any;
-
+  nameSong: any;
+  currenSong: any;
+  audio = new Audio();
   constructor(private musicService: MusicService) {
 
   }
 
   ngAfterViewInit(): void {
-    this.urlSong = this.musicService.currentSong$.subscribe(url => {
-          this.urlSong = url;
-          console.log(url)
-    })
   }
 
   ngOnInit(): void {
@@ -34,8 +32,18 @@ export class PlaylistComponent implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   ngOnDestroy(): void {
+    this.audio.pause();
+    this.audio.src="";
   }
 
+
+  playSong($event: any) {
+    this.currenSong = $event;
+    this.nameSong = this.currenSong.name;
+    this.audio.src = this.currenSong.path;
+    this.audio.load();
+    this.audio.play();
+  }
 }
 
 export interface Tile {
