@@ -21,13 +21,13 @@
   position: relative;
   top: 1%;
   left: -44%;
-  animation: spin 4s linear infinite;
+  animation: spin5 2s linear infinite;
   text-shadow: 3px 3px 10px #3cf501;
   color: #ecd11f;
   font-size: 18px;
 }
 
-@keyframes spin {
+@keyframes spin5 {
   100% {
     transform: rotate(360deg);
   }

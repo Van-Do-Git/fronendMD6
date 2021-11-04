@@ -24,6 +24,13 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { SonglistComponent } from './songlist/songlist.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
+import { LatestComponent } from './playlist/latest/latest.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import { CountComponent } from './playlist/count/count.component';
+import { CountlikeComponent } from './playlist/countlike/countlike.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +41,10 @@ import { SonglistComponent } from './songlist/songlist.component';
     RegitryComponent,
     LoginComponent,
     SongComponent,
-    SonglistComponent
+    SonglistComponent,
+    LatestComponent,
+    CountComponent,
+    CountlikeComponent
   ],
   imports: [
     MatInputModule,
@@ -51,7 +61,11 @@ import { SonglistComponent } from './songlist/songlist.component';
     HttpClientModule,
     MatSliderModule,
     MatProgressBarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatGridListModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

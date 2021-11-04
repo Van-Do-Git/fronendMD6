@@ -2,9 +2,6 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/compat/storage";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {MusicService} from "../service/music.service";
-import {Router} from "@angular/router";
-import {Song} from "../../model/song";
-import {Account} from "../../model/account";
 
 @Component({
   selector: 'app-song',
@@ -67,7 +64,8 @@ export class SongComponent implements OnInit {
   onSubmit() {
     if(this.typeFile=='audio/mpeg'){
       this.musicsv.createSong(this.formdata.value).subscribe(() => {
-      console.log("Đúng định dạng rồi")
+        this.formdata.reset();
+        alert("Tạo thành công!")
       })
     }else {
       alert("Không đúng định dạng file!")

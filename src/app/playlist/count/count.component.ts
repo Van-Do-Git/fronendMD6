@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MusicService} from "../../service/music.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-count',
@@ -29,5 +30,8 @@ export class CountComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource<any>(this.songlist);
     })
     this.dataSource.paginator = this.paginator;
+  }
+  playCurrent(urlSong:string){
+    this.musicServiec.currentSong$.next(urlSong);
   }
 }

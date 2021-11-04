@@ -1,14 +1,14 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {MatPaginator} from "@angular/material/paginator";
 import {MusicService} from "../../service/music.service";
 import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
-  selector: 'app-latest',
-  templateUrl: './latest.component.html',
-  styleUrls: ['./latest.component.scss']
+  selector: 'app-countlike',
+  templateUrl: './countlike.component.html',
+  styleUrls: ['./countlike.component.scss']
 })
-export class LatestComponent implements OnInit, AfterViewInit {
+export class CountlikeComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource:any;
   songlist: any;
@@ -24,11 +24,10 @@ export class LatestComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.musicServiec.getSongLatest().subscribe(data=>{
+    this.musicServiec.getSongLikes().subscribe(data=>{
       this.songlist = data['content'];
       this.dataSource = new MatTableDataSource<any>(this.songlist);
     })
     this.dataSource.paginator = this.paginator;
-
   }
 }

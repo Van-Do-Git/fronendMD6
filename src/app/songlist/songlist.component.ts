@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MusicService} from "../service/music.service";
 import {Observable} from "rxjs";
 
@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
   templateUrl: './songlist.component.html',
   styleUrls: ['./songlist.component.scss']
 })
-export class SonglistComponent implements OnInit {
+export class SonglistComponent implements OnInit,OnDestroy {
   songs: any;
   constructor( private musicsv: MusicService) {
   }
@@ -15,8 +15,11 @@ export class SonglistComponent implements OnInit {
     this.musicsv.getMySongList(Number(window.sessionStorage.getItem("ID_KEY")))
       .subscribe(data =>{
         this.songs = data;
-        console.log(this.songs)
       })
+    this.currentIndex = 0;
+    this.currentTime = 0;
+    this.totalTime = 0;
+    this.checkplay = true;
   }
   audio = new Audio();
   audioEvents = [
@@ -33,18 +36,45 @@ export class SonglistComponent implements OnInit {
   currentIndex = 0;
   currentTime = 0;
   totalTime = 0;
-  checkplay = false;
+  checkplay = true;
+
   play() {
-    if(!this.checkplay&&this.currentTime==0){
-      this.streamObserver(this.songs[this.currentIndex].path).subscribe(event =>{});
-    }else if(!this.checkplay&&this.currentTime!=0){
-      this.audio.pause();
-      this.checkplay = !this.checkplay;
+    if(this.checkplay&&this.currentTime==0){
+      this.streamObserver(this.songs[this.currentIndex].path).subscribe();
+      this.checkplay = false;
+    }else if(this.checkplay&&this.currentTime!=0){
+      this.audio.play();
+      this.checkplay = false;
     }else {
-      this.audio.play()
-      this.checkplay = !this.checkplay;
+      this.audio.pause()
+      this.checkplay = true;
     }
   }
+
+  next() {
+    this.currentTime=0;
+    this.checkplay = true;
+    if(this.currentIndex<this.songs.length){
+      this.currentIndex++;
+    }else {
+      this.currentIndex=0;
+    }
+    console.log(this.currentIndex)
+    this.play();
+  }
+
+  prev(){
+    this.currentTime=0;
+    this.checkplay = true;
+    if(this.currentIndex==0){
+      this.currentIndex=this.songs.length;
+    }else {
+      this.currentIndex--;
+    }
+    console.log(this.currentIndex)
+    this.play();
+  }
+
 
   streamObserver(url:string){
     return new Observable(observer =>{
@@ -52,10 +82,12 @@ export class SonglistComponent implements OnInit {
       this.audio.load();
       this.audio.play();
       this.totalTime=this.audio.duration;
-      this.checkplay = !this.checkplay;
 
       const handler = (event : Event) =>{
         this.currentTime=this.audio.currentTime;
+        if(this.currentTime==this.audio.duration){
+          this.play();
+        }
       }
       this.addEvent(this.audio,this.audioEvents,handler);
       return ()=>{
@@ -79,5 +111,11 @@ export class SonglistComponent implements OnInit {
 
   setProsess(myRange: HTMLInputElement) {
     this.audio.currentTime = Number(myRange.value);
+  }
+
+  ngOnDestroy(): void {
+    this.audio.pause();
+    this.audio.currentTime = 0;
+    this.checkplay = true;
   }
 }

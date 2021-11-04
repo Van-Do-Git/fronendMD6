@@ -38,12 +38,11 @@ html {
 
 .dashboard {
   padding: 16px 16px 14px;
-  background-color: #fff;
   position: fixed;
   top: 80%;
+  left: 0;
   width: 100%;
-  max-width: 480px;
-  border-bottom: 1px solid #ebebeb;
+  height: 20%;
 }
 
 /* HEADER */
@@ -97,8 +96,8 @@ header h2 {
 }
 
 .control .btn-toggle-play {
-  width: 56px;
-  height: 56px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   font-size: 24px;
   color: #fff;

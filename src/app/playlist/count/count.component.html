@@ -2,10 +2,16 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
 
+
+
     <!-- Position Column -->
     <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Name Song </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <th mat-header-cell *matHeaderCellDef>Name Song</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="playCurrent(element.path)">
+          <mat-icon style="color: #3cf501">play_circle_outline</mat-icon>{{ element.name}}
+        </button>
+      </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -23,7 +29,7 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="symbol">
       <th mat-header-cell *matHeaderCellDef> Like </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.countLike}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

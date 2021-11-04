@@ -1,21 +1,22 @@
 <div class="player" >
   <!-- Dashboard -->
-  <div class="dashboard">
+  <div class="dashboard" style="background-image: url(https://i.pinimg.com/originals/d0/96/fe/d096fe816480c44a6f3294b6d41be12f.jpg)">
     <div class="control" >
       <div class="btn btn-repeat">
-        <mat-icon>repeat</mat-icon>
+        <mat-icon style="color: aliceblue">repeat</mat-icon>
       </div>
-      <div class="btn btn-prev">
-        <mat-icon>skip_previous</mat-icon>
+      <div  (click)="prev()">
+        <mat-icon style="color: aliceblue">skip_previous</mat-icon>
       </div>
-      <div class="btn btn-prev">
-        <mat-icon (click)="play()">play_circle_outline</mat-icon>
+      <div class="btn btn-prev" (click)="play()">
+        <mat-icon *ngIf="checkplay" style="color: aliceblue">play_circle_outline</mat-icon>
+        <mat-icon *ngIf="!checkplay" style="color: aliceblue">pause_circle_outline</mat-icon>
       </div>
-      <div class="btn btn-next">
-        <mat-icon>skip_next</mat-icon>
+      <div class="btn btn-next" (click)="next()">
+        <mat-icon style="color: aliceblue">skip_next</mat-icon>
       </div>
       <div class="btn btn-random">
-        <mat-icon>shuffle</mat-icon>
+        <mat-icon style="color: aliceblue">shuffle</mat-icon>
       </div>
     </div>
     <div class="slidecontainer">
