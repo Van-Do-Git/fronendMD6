@@ -1,44 +1,14 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Music player</title>
-
-<div class="player" >
-  <!-- Dashboard -->
-  <div class="dashboard">
-    <div class="control" >
-      <div class="btn btn-repeat">
-        <mat-icon>repeat</mat-icon>
-      </div>
-      <div class="btn btn-prev">
-        <mat-icon>skip_previous</mat-icon>
-      </div>
-      <div class="btn btn-prev">
-        <mat-icon (click)="play()">play_circle_outline</mat-icon>
-      </div>
-      <div class="btn btn-next">
-        <mat-icon>skip_next</mat-icon>
-      </div>
-      <div class="btn btn-random">
-        <mat-icon>shuffle</mat-icon>
-      </div>
-    </div>
-    <div class="slidecontainer">
-      <input type="range" min="0" max="{{totalTime}}" value="{{currentTime}}" class="slider" #myRange (input)="setProsess(myRange)">
-    </div>
-  </div>
-
-  <div class="playlist" >
-    <div class="song" *ngFor="let s of songs;index as i" >
-    <div class="thumb"
-         [style]="'background-image: url(https://neton.vn/wp-content/uploads/2019/11/cach-upload-nhac-len-zing-mp3-11.jpg)'" >
-    </div>
-    <div class="body">
-      <h3 class="title">{{s.name}}</h3>
-      <p class="author">{{s.singer}}</p>
-    </div>
-    <div class="option">
-      <mat-icon>more_horiz</mat-icon>
-    </div>
-  </div>
-  </div>
-</div>
+<mat-grid-list cols="6" rowHeight="10%">
+  <mat-grid-tile colspan="6" rowspan="1" style="background-color: #ffffff;">
+    <div id="play-pause"><img width="50px" height="50px" src="https://img3.thuthuatphanmem.vn/uploads/2019/09/30/mau-hinh-tron-ngu-sac-don-gian_111541102.png"></div><p id="name-song">Tên bài hát</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="9" style="background-color: #101628;">
+    <app-latest ></app-latest>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="9" style="background-color: #a40404;">
+    <app-count></app-count>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="9" style="background-color: #754444;">
+  </mat-grid-tile>
+</mat-grid-list>
 

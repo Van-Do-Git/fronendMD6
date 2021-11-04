@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+}
+.titleSong1 {
+  font-weight: bold;
+  position: relative;
+  animation: spin1 4s linear infinite;
+  text-shadow: 3px 3px 10px #0068ff;
+  color: #faf5de;
+  font-size: 18px;
+  left: 20%;
+}
+
+@keyframes spin1 {
+  from {color: #ecd11f;}
+  to {color: #8cfad5;}
+}
