@@ -2,7 +2,6 @@
   <a routerLink="" class="active">Home</a>
   <a routerLink="registry" *ngIf="!checklogin">Registry</a>
   <a routerLink="login" *ngIf="!checklogin">Login</a>
-  <a routerLink="logout" *ngIf="checklogin" (click)="logout()">Logout</a>
   <a routerLink="create-song" *ngIf="checklogin">Create Song</a>
   <a routerLink="songs" *ngIf="checklogin">My song list</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -21,7 +20,7 @@
         <mat-icon>edit</mat-icon>
         <span>Cập nhật profile</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="logout()">
         <mat-icon>logout</mat-icon>
         <span>Đăng xuất</span>
       </button>

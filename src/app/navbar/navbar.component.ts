@@ -39,9 +39,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
 
   logout() {
-    if (confirm("Bạn có muốn đăng xuất không?")) {
-      window.sessionStorage.clear();
-      this.checklogin = false;
-    }
+    window.sessionStorage.clear();
+    this.checklogin = false;
   }
 }
