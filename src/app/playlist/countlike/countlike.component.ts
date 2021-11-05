@@ -9,11 +9,12 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./countlike.component.scss']
 })
 export class CountlikeComponent implements OnInit,AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource:any;
+  displayedColumns2: string[] = ['position2', 'name2', 'weight2', 'symbol2'];
+  dataSource2: any;
   songlist: any;
 
-  @ViewChild(MatPaginator) paginator: any;
+  @ViewChild(MatPaginator) paginator1: any;
+
   @Output() eventEmitter = new EventEmitter();
 
   constructor(private musicServiec: MusicService) {
@@ -21,16 +22,20 @@ export class CountlikeComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    this.dataSource2.paginator = this.paginator1;
   }
 
   ngOnInit(): void {
-    this.musicServiec.getSongLikes().subscribe(data=>{
-      this.songlist = data['content'];
-      this.dataSource = new MatTableDataSource<any>(this.songlist);
-    })
-    this.dataSource.paginator = this.paginator;
+    this.loadPage()
   }
+  loadPage(){
+    this.musicServiec.getSongLikes().subscribe(data => {
+      this.songlist = data['content'];
+      this.dataSource2 = new MatTableDataSource<any>(this.songlist);
+    })
+    this.dataSource2.paginator = this.paginator1;
+  }
+
   playCurrent(song: any) {
     this.eventEmitter.emit(song);
   }

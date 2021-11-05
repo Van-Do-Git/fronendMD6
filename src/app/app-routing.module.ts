@@ -7,7 +7,7 @@ import {SongComponent} from "./song/song.component";
 import {SonglistComponent} from "./songlist/songlist.component";
 
 const routes: Routes = [
-  {path: 'playlist', component: PlaylistComponent},
+  {path: '', component: PlaylistComponent},
   {path: 'registry', component: RegitryComponent},
   {path: 'login', component: LoginComponent},
   {path: 'create-song', component: SongComponent},

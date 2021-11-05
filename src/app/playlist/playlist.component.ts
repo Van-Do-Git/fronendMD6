@@ -43,6 +43,7 @@ export class PlaylistComponent implements OnInit, OnDestroy, AfterViewInit {
     this.audio.src = this.currenSong.path;
     this.audio.load();
     this.audio.play();
+    this.musicService.updateSong(this.currenSong).subscribe();
   }
 }
 

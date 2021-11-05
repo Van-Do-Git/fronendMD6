@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {MusicService} from "../service/music.service";
 import {Router} from "@angular/router";
@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   alert = '';
+
   public formdata = this.formBuilder.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
           window.sessionStorage.setItem('ID_KEY', data.id);
           window.sessionStorage.setItem('FULLNAME_KEY', data.fullName);
           window.sessionStorage.setItem('AVATAR_KEY', data.avatar.path);
-          this.r.navigate(['/playlist'])
+          this.musicsv.checkLogin$.next("ok");
+          this.r.navigate(['/']);
           this.formdata.reset();
         } else {
           this.alert = data.mesage;

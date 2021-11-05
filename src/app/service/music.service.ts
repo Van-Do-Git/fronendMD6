@@ -47,4 +47,5 @@ export class MusicService {
   updateSong(song:any): Observable<any> {
     return this.http.put<any>(this.API_CLIENT + '/upadateSong',song);
   }
+  checkLogin$ = new BehaviorSubject<string>('');
 }

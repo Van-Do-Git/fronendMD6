@@ -9,11 +9,11 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./latest.component.scss']
 })
 export class LatestComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource:any;
+  displayedColumns3: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource3:any;
   songlist: any;
 
-  @ViewChild(MatPaginator) paginator: any;
+  @ViewChild(MatPaginator) paginator3: any;
   @Output() eventEmitter = new EventEmitter();
 
   constructor(private musicServiec: MusicService) {
@@ -21,18 +21,24 @@ export class LatestComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    this.dataSource3.paginator = this.paginator3;
   }
 
   ngOnInit(): void {
-    this.musicServiec.getSongLatest().subscribe(data=>{
-      this.songlist = data['content'];
-      this.dataSource = new MatTableDataSource<any>(this.songlist);
-    })
-    this.dataSource.paginator = this.paginator;
-
+    this.loadPage()
   }
+  loadPage(){
+    this.musicServiec.getSongLatest().subscribe(data => {
+      this.songlist = data['content'];
+      this.dataSource3 = new MatTableDataSource<any>(this.songlist);
+    })
+    this.dataSource3.paginator = this.paginator3;
+  }
+
   playCurrent(song: any) {
     this.eventEmitter.emit(song);
+    this.musicServiec.updateSong(song).subscribe(()=>{
+      this.loadPage()
+    })
   }
 }

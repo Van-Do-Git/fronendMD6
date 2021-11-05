@@ -2,8 +2,7 @@ import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from 
 import {MatPaginator} from "@angular/material/paginator";
 import {MusicService} from "../../service/music.service";
 import {MatTableDataSource} from "@angular/material/table";
-import {BehaviorSubject} from "rxjs";
-import {Song} from "../../../model/song";
+
 
 @Component({
   selector: 'app-count',
@@ -11,11 +10,11 @@ import {Song} from "../../../model/song";
   styleUrls: ['./count.component.scss']
 })
 export class CountComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource: any;
-  songlist: any;
+  displayedColumns1: string[] = ['position1', 'name1', 'weight1', 'symbol1'];
+  dataSource1: any;
+  songlist1: any;
 
-  @ViewChild(MatPaginator) paginator: any;
+  @ViewChild(MatPaginator) paginator1: any;
 
   @Output() eventEmitter = new EventEmitter();
 
@@ -24,23 +23,21 @@ export class CountComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    this.dataSource1.paginator = this.paginator1;
   }
 
   ngOnInit(): void {
-    this.musicServiec.getSongCount().subscribe(data => {
-      this.songlist = data['content'];
-      this.dataSource = new MatTableDataSource<any>(this.songlist);
-    })
-    this.dataSource.paginator = this.paginator;
+    this.loadPage()
   }
-
-  current: Array<string> = []
+  loadPage(){
+    this.musicServiec.getSongCount().subscribe(data => {
+      this.songlist1 = data['content'];
+      this.dataSource1 = new MatTableDataSource<any>(this.songlist1);
+    })
+    this.dataSource1.paginator = this.paginator1;
+  }
 
   playCurrent(song: any) {
     this.eventEmitter.emit(song);
-    this.musicServiec.updateSong(song).subscribe(()=>{
-      this.ngOnInit();
-    })
   }
 }

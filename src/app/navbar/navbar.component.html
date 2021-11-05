@@ -1,12 +1,32 @@
 <div class="topnav" id="myTopnav">
-  <a routerLink="playlist" class="active">Home</a>
-  <a routerLink="registry">Registry</a>
-  <a routerLink="login">Login</a>
-  <a routerLink="logout">Logout</a>
-  <a routerLink="create-song">Create Song</a>
-  <a routerLink="songs">My song list</a>
+  <a routerLink="" class="active">Home</a>
+  <a routerLink="registry" *ngIf="!checklogin">Registry</a>
+  <a routerLink="login" *ngIf="!checklogin">Login</a>
+  <a routerLink="logout" *ngIf="checklogin" (click)="logout()">Logout</a>
+  <a routerLink="create-song" *ngIf="checklogin">Create Song</a>
+  <a routerLink="songs" *ngIf="checklogin">My song list</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
+  <div *ngIf="checklogin" style="margin-left:88%;position: fixed ">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <img src="{{avartar}}" id="avatar" ><span style="color: blanchedalmond;font-family: 'Bauhaus 93';font-size: 15px">  {{fullnam}}</span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>create</mat-icon>
+        <span>Đổi mật khẩu</span>
+      </button>
+      <button mat-menu-item >
+        <mat-icon>edit</mat-icon>
+        <span>Cập nhật profile</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Đăng xuất</span>
+      </button>
+    </mat-menu>
+  </div>
 </div>
+
 

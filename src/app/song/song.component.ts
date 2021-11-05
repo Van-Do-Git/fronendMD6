@@ -14,6 +14,7 @@ export class SongComponent implements OnInit {
   downloadURL: string | undefined;
   checkUploadFile = false;
   idAccounts?: number;
+  count = 0;
   typeFile: string | undefined;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
@@ -31,7 +32,7 @@ export class SongComponent implements OnInit {
   onFileChanged($event: any) {
     this.selectedFile = $event.target.files[0];
     this.typeFile = this.selectedFile?.type;
-    this.onUpload()
+    this.onUpload();
   }
 
   onUpload() {
@@ -56,18 +57,16 @@ export class SongComponent implements OnInit {
     name: ['', Validators.required],
     singer: ['', Validators.required],
     path: ['', Validators.required],
-    count: [''],
     idAccount: ['']
   })
-  count = 0;
 
   onSubmit() {
-    if(this.typeFile=='audio/mpeg'){
+    if (this.typeFile == 'audio/mpeg') {
       this.musicsv.createSong(this.formdata.value).subscribe(() => {
-        this.formdata.reset();
+        location.reload();
         alert("Tạo thành công!")
       })
-    }else {
+    } else {
       alert("Không đúng định dạng file!")
     }
     return;

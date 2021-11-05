@@ -31,6 +31,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import { CountComponent } from './playlist/count/count.component';
 import { CountlikeComponent } from './playlist/countlike/countlike.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -46,27 +47,28 @@ import { CountlikeComponent } from './playlist/countlike/countlike.component';
     CountComponent,
     CountlikeComponent
   ],
-  imports: [
-    MatInputModule,
-    FormsModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatSliderModule,
-    MatProgressBarModule,
-    MatFormFieldModule,
-    MatGridListModule,
-    MatCardModule,
-    MatPaginatorModule,
-    MatTableModule
-  ],
+    imports: [
+        MatInputModule,
+        FormsModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatSliderModule,
+        MatProgressBarModule,
+        MatFormFieldModule,
+        MatGridListModule,
+        MatCardModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatMenuModule
+    ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
