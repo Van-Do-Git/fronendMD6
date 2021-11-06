@@ -1,3 +1,22 @@
 .container{
   text-align: center;
 }
+
+#name-song {
+  font-weight: bold;
+  position: relative;
+  animation: spin7 15s infinite;
+  animation-timing-function: linear;
+  text-shadow: 3px 3px 10px #3cf501;
+  color: #F2E6D8;
+  font-size: 18px;
+}
+
+@keyframes spin7 {
+  from {
+    left: -30%;
+  }
+  to {
+    left: 30%;
+  }
+}

@@ -1,19 +1,22 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MusicService} from "../service/music.service";
 import {Observable} from "rxjs";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-songlist',
   templateUrl: './songlist.component.html',
   styleUrls: ['./songlist.component.scss']
 })
-export class SonglistComponent implements OnInit,OnDestroy {
+export class SonglistComponent implements OnInit, OnDestroy {
   songs: any;
-  constructor( private musicsv: MusicService) {
+
+  constructor(private musicsv: MusicService) {
   }
+
   ngOnInit(): void {
     this.musicsv.getMySongList(Number(window.sessionStorage.getItem("ID_KEY")))
-      .subscribe(data =>{
+      .subscribe(data => {
         this.songs = data;
       })
     this.currentIndex = 0;
@@ -21,6 +24,7 @@ export class SonglistComponent implements OnInit,OnDestroy {
     this.totalTime = 0;
     this.checkplay = true;
   }
+
   audio = new Audio();
   audioEvents = [
     "ended",
@@ -34,78 +38,83 @@ export class SonglistComponent implements OnInit,OnDestroy {
     "loadstart"
   ];
   currentIndex = 0;
-  currentTime = 0;
-  totalTime = 0;
+  currentTime: any;
+  currentRange = 0;
+  totalRang = 0;
+  totalTime: any;
   checkplay = true;
+  nameSong: any;
 
   play() {
-    if(this.checkplay&&this.currentTime==0){
+    this.nameSong = this.songs[this.currentIndex].name;
+    if (this.checkplay && this.currentRange == 0) {
       this.streamObserver(this.songs[this.currentIndex].path).subscribe();
       this.checkplay = false;
-    }else if(this.checkplay&&this.currentTime!=0){
+    } else if (this.checkplay && this.currentRange != 0) {
       this.audio.play();
       this.checkplay = false;
-    }else {
+    } else {
       this.audio.pause()
       this.checkplay = true;
     }
   }
 
   next() {
-    this.currentTime=0;
+    this.currentRange = 0;
     this.checkplay = true;
-    if(this.currentIndex<this.songs.length){
+    if (this.currentIndex < this.songs.length) {
       this.currentIndex++;
-    }else {
-      this.currentIndex=0;
+    } else {
+      this.currentIndex = 0;
     }
-    console.log(this.currentIndex)
     this.play();
   }
 
-  prev(){
-    this.currentTime=0;
+  prev() {
+    this.currentRange = 0;
     this.checkplay = true;
-    if(this.currentIndex==0){
-      this.currentIndex=this.songs.length;
-    }else {
+    if (this.currentIndex == 0) {
+      this.currentIndex = this.songs.length;
+    } else {
       this.currentIndex--;
     }
-    console.log(this.currentIndex)
     this.play();
   }
 
 
-  streamObserver(url:string){
-    return new Observable(observer =>{
+  streamObserver(url: string) {
+    return new Observable(() => {
       this.audio.src = url;
       this.audio.load();
       this.audio.play();
-      this.totalTime=this.audio.duration;
 
-      const handler = (event : Event) =>{
-        this.currentTime=this.audio.currentTime;
-        if(this.currentTime==this.audio.duration){
-          this.play();
+      const handler = (event: Event) => {
+        this.currentTime = moment.utc(this.audio.currentTime * 1000).format("mm:ss");
+        this.totalTime = moment.utc(this.audio.duration * 1000).format("mm:ss");
+        this.totalRang = this.audio.duration;
+        this.currentRange = this.audio.currentTime;
+        if (this.audio.currentTime == this.audio.duration) {
+          this.next();
         }
       }
-      this.addEvent(this.audio,this.audioEvents,handler);
-      return ()=>{
+      this.addEvent(this.audio, this.audioEvents, handler);
+      return () => {
         this.audio.pause();
         this.audio.currentTime = 0;
-        this.removeEvent(this.audio,this.audioEvents,handler)
+        this.removeEvent(this.audio, this.audioEvents, handler)
       }
     })
   }
 
   private addEvent(audio: HTMLAudioElement, audioEvents: string[], handler: (event: Event) => void) {
-    audioEvents.forEach(event =>{
-      audio.addEventListener(event,handler)
+    audioEvents.forEach(event => {
+      audio.addEventListener(event, handler)
     })
   }
+
   private removeEvent(audio: HTMLAudioElement, audioEvents: string[], handler: (event: Event) => void) {
-    audioEvents.forEach(event =>{
-      audio.removeEventListener(event,handler)
+    audioEvents.forEach(event => {
+      audio.removeEventListener(event, handler)
     })
   }
 
@@ -117,5 +126,10 @@ export class SonglistComponent implements OnInit,OnDestroy {
     this.audio.pause();
     this.audio.currentTime = 0;
     this.checkplay = true;
+  }
+
+  playThis(i: number) {
+    this.currentIndex = i-1;
+    this.next();
   }
 }

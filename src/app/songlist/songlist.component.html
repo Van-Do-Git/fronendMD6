@@ -1,40 +1,54 @@
-<div class="player" >
-  <!-- Dashboard -->
-  <div class="dashboard" style="background-image: url(https://i.pinimg.com/originals/d0/96/fe/d096fe816480c44a6f3294b6d41be12f.jpg)">
-    <div class="control" >
-      <div class="btn btn-repeat">
-        <mat-icon style="color: aliceblue">repeat</mat-icon>
-      </div>
-      <div  (click)="prev()">
-        <mat-icon style="color: aliceblue">skip_previous</mat-icon>
-      </div>
-      <div class="btn btn-prev" (click)="play()">
-        <mat-icon *ngIf="checkplay" style="color: aliceblue">play_circle_outline</mat-icon>
-        <mat-icon *ngIf="!checkplay" style="color: aliceblue">pause_circle_outline</mat-icon>
-      </div>
-      <div class="btn btn-next" (click)="next()">
-        <mat-icon style="color: aliceblue">skip_next</mat-icon>
-      </div>
-      <div class="btn btn-random">
-        <mat-icon style="color: aliceblue">shuffle</mat-icon>
-      </div>
-    </div>
-    <div class="slidecontainer">
-      <input type="range" min="0" max="{{totalTime}}" value="{{currentTime}}" class="slider" #myRange (input)="setProsess(myRange)">
+<div id="control" style="background-image: url(https://i.pinimg.com/originals/d0/96/fe/d096fe816480c44a6f3294b6d41be12f.jpg);">
+  <!-- Control -->
+  <br>
+  <p id="name-song" *ngIf="nameSong">Đang phát bài {{nameSong}}</p>
+  <mat-grid-list cols="5" rowHeight="35px">
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-icon style="color: aliceblue">repeat</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="prev()" colspan="1" rowspan="1">
+      <mat-icon style="color: aliceblue">skip_previous</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="play()" colspan="1" rowspan="1">
+      <mat-icon *ngIf="checkplay" style="color: aliceblue">play_circle_outline</mat-icon>
+      <mat-icon *ngIf="!checkplay" style="color: aliceblue">pause_circle_outline</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="next()" colspan="1" rowspan="1">
+      <mat-icon style="color: aliceblue">skip_next</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-icon style="color: aliceblue">shuffle</mat-icon>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <!-- Range -->
+  <div id="slider-container">
+    <div id="progress-bar-cover">
+      <span style="color: white">{{currentTime}}</span>
+      <input type="range" min="0" max="{{totalRang}}" value="{{currentRange}}" id="range" #myRange
+             (input)="setProsess(myRange)">
+      <span style="color: white">{{totalTime}}</span>
     </div>
   </div>
+  <br>
+</div>
 
-  <div class="playlist" >
-    <div class="song" *ngFor="let s of songs;index as i" >
-      <div class="thumb"
-           [style]="'background-image: url(https://neton.vn/wp-content/uploads/2019/11/cach-upload-nhac-len-zing-mp3-11.jpg)'" >
+<!-- List Music -->
+<mat-card>
+  <div class="playlist">
+    <div class="song" *ngFor="let s of songs;index as i">
+      <div class="thumb" (click)="playThis(i)"
+           [style]="'background-image: url(https://neton.vn/wp-content/uploads/2019/11/cach-upload-nhac-len-zing-mp3-11.jpg)'">
       </div>
       <div class="body">
         <h3 class="title">{{s.name}}</h3>
+      </div>
+      <div class="body">
+        <h3 class="title">Ca sĩ :{{s.singer}}</h3>
       </div>
       <div class="option">
         <mat-icon>more_horiz</mat-icon>
       </div>
     </div>
   </div>
-</div>
+</mat-card>
+

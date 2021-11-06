@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MusicService} from "../service/music.service";
-import {Song} from "../../model/song";
 
 
 @Component({
@@ -43,7 +42,6 @@ export class PlaylistComponent implements OnInit, OnDestroy, AfterViewInit {
     this.audio.src = this.currenSong.path;
     this.audio.load();
     this.audio.play();
-    this.musicService.updateSong(this.currenSong).subscribe();
   }
 }
 

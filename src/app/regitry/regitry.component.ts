@@ -16,8 +16,6 @@ export class RegitryComponent implements OnInit {
     re_password: ['', Validators.required],
     phoneNumber: ['', Validators.required],
     fullName: ['', Validators.required],
-    email: ['', Validators.required],
-    address: ['', Validators.required],
   })
 
   constructor(private formBuilder: FormBuilder, private musicsv: MusicService,private r: Router) {

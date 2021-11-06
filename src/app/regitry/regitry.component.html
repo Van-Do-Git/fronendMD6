@@ -2,35 +2,48 @@
   <div class="row">
     <p *ngIf="alert" >{{alert}}</p>
     <div class="col-3"></div>
-    <div class="col-6" style="margin-top: 20px">
+    <div class="col-6" style="margin-top: 20px;text-align: center">
       <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">UserName</label>
-          <input formControlName="username" type="text" class="form-control" id="exampleFormControlInput1">
+          <mat-form-field style="width: 350px" appearance="outline">
+            <mat-label>Username: </mat-label>
+            <input formControlName="username"  matInput placeholder="Placeholder" minlength="3" maxlength="100" required>
+            <mat-icon matSuffix>person_outline</mat-icon>
+            <mat-error >The name is required!</mat-error>
+          </mat-form-field>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlInput2" class="form-label">Password</label>
-          <input formControlName="password" type="password" class="form-control" id="exampleFormControlInput2">
+          <mat-form-field style="width: 350px" appearance="outline">
+            <mat-label>Full name: </mat-label>
+            <input formControlName="fullName" type="text" matInput placeholder="Placeholder"  required>
+            <mat-icon matSuffix>info</mat-icon>
+            <mat-error >The full name is required!</mat-error>
+          </mat-form-field>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlInput3" class="form-label">Re-Password</label>
-          <input formControlName="re_password" type="password" class="form-control" id="exampleFormControlInput3">
+          <mat-form-field style="width: 350px" appearance="outline">
+            <mat-label>Password: </mat-label>
+            <input formControlName="password" type="password" matInput placeholder="Placeholder" minlength="6" maxlength="8" required>
+            <mat-icon matSuffix>password</mat-icon>
+            <mat-error >The password is required!</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field style="width: 350px" appearance="outline">
+            <mat-label>Re-password: </mat-label>
+            <input formControlName="re_password" type="password"  matInput placeholder="Placeholder" minlength="6" maxlength="8" required>
+            <mat-icon matSuffix>password</mat-icon>
+            <mat-error >The re-password is required!</mat-error>
+          </mat-form-field>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlInput4" class="form-label">Phone Number</label>
-          <input formControlName="phoneNumber" type="text" class="form-control" id="exampleFormControlInput4">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput5" class="form-label">Full Name</label>
-          <input formControlName="fullName" type="text" class="form-control" id="exampleFormControlInput5">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput6" class="form-label">Email</label>
-          <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput6">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea7" class="form-label">Address</label>
-          <input formControlName="address" class="form-control" id="exampleFormControlTextarea7">
+          <mat-form-field style="width: 350px" appearance="outline">
+            <mat-label>Phone: </mat-label>
+            <input formControlName="phoneNumber" type="text"   matInput placeholder="Placeholder" minlength="3" maxlength="100" required>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error >The phone is required!</mat-error>
+          </mat-form-field>
         </div>
         <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Create</button>
         &nbsp;
@@ -39,4 +52,5 @@
     </div>
   </div>
 </div>
+
 

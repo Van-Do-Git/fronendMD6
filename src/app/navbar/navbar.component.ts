@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {MusicService} from "../service/music.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   avartar: any;
   fullnam: any;
 
-  constructor(private musicsv: MusicService) {
+  constructor(private musicsv: MusicService, private r :Router) {
   }
 
   ngOnInit(): void {
@@ -41,5 +42,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   logout() {
     window.sessionStorage.clear();
     this.checklogin = false;
+    this.r.navigate(['/']);
   }
 }

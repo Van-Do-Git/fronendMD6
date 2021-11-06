@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component, DoCheck,
+  EventEmitter,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MusicService} from "../../service/music.service";
 import {MatTableDataSource} from "@angular/material/table";
@@ -29,7 +39,8 @@ export class CountComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.loadPage()
   }
-  loadPage(){
+
+  loadPage() {
     this.musicServiec.getSongCount().subscribe(data => {
       this.songlist1 = data['content'];
       this.dataSource1 = new MatTableDataSource<any>(this.songlist1);
@@ -38,6 +49,10 @@ export class CountComponent implements OnInit, AfterViewInit {
   }
 
   playCurrent(song: any) {
+    this.musicServiec.updateSong(song.id).subscribe();
+    this.loadPage();
     this.eventEmitter.emit(song);
   }
+
+
 }

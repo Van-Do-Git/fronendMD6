@@ -32,6 +32,7 @@ import {MatTableModule} from "@angular/material/table";
 import { CountComponent } from './playlist/count/count.component';
 import { CountlikeComponent } from './playlist/countlike/countlike.component';
 import {MatMenuModule} from "@angular/material/menu";
+import {MatCarouselModule} from "@ngmodule/material-carousel";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,9 @@ import {MatMenuModule} from "@angular/material/menu";
         MatCardModule,
         MatPaginatorModule,
         MatTableModule,
-        MatMenuModule
+        MatMenuModule,
+       MatCarouselModule.forRoot(),
+
     ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

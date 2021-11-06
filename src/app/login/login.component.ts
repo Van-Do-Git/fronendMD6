@@ -9,6 +9,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  slides = [{'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'},{'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}];
+
   alert = '';
 
   public formdata = this.formBuilder.group({
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
           this.r.navigate(['/']);
           this.formdata.reset();
         } else {
-          this.alert = data.mesage;
+          alert(data.mesage)
         }
       }
     )
