@@ -1,12 +1,9 @@
 import {
   AfterViewInit,
-  Component, DoCheck,
+  Component,
   EventEmitter,
-  OnChanges,
-  OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
@@ -23,7 +20,6 @@ export class CountComponent implements OnInit, AfterViewInit {
   displayedColumns1: string[] = ['position1', 'name1', 'weight1', 'symbol1'];
   dataSource1: any;
   songlist1: any;
-
   @ViewChild(MatPaginator) paginator1: any;
 
   @Output() eventEmitter = new EventEmitter();

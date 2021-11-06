@@ -23,6 +23,8 @@ export class SonglistComponent implements OnInit, OnDestroy {
     this.currentTime = 0;
     this.totalTime = 0;
     this.checkplay = true;
+    this.currentTime = moment.utc(0).format("mm:ss");
+    this.totalTime = moment.utc(0).format("mm:ss");
   }
 
   audio = new Audio();
@@ -87,10 +89,9 @@ export class SonglistComponent implements OnInit, OnDestroy {
       this.audio.src = url;
       this.audio.load();
       this.audio.play();
-
       const handler = (event: Event) => {
-        this.currentTime = moment.utc(this.audio.currentTime * 1000).format("mm:ss");
-        this.totalTime = moment.utc(this.audio.duration * 1000).format("mm:ss");
+        this.currentTime = moment.utc(this.audio.currentTime*1000).format("mm:ss");
+        this.totalTime = moment.utc(this.audio.duration*1000).format("mm:ss");
         this.totalRang = this.audio.duration;
         this.currentRange = this.audio.currentTime;
         if (this.audio.currentTime == this.audio.duration) {
@@ -129,7 +130,7 @@ export class SonglistComponent implements OnInit, OnDestroy {
   }
 
   playThis(i: number) {
-    this.currentIndex = i-1;
+    this.currentIndex = i - 1;
     this.next();
   }
 }

@@ -20,6 +20,7 @@
       <mat-icon style="color: aliceblue">shuffle</mat-icon>
     </mat-grid-tile>
   </mat-grid-list>
+
   <!-- Range -->
   <div id="slider-container">
     <div id="progress-bar-cover">
@@ -35,15 +36,23 @@
 <!-- List Music -->
 <mat-card>
   <div class="playlist">
-    <div class="song" *ngFor="let s of songs;index as i">
-      <div class="thumb" (click)="playThis(i)"
-           [style]="'background-image: url(https://neton.vn/wp-content/uploads/2019/11/cach-upload-nhac-len-zing-mp3-11.jpg)'">
+    <div class="song" *ngFor="let s of songs;index as i" [ngClass]="{'play':currentIndex==i}">
+      <div class="thumb" (click)="playThis(i)">
+        <mat-icon *ngIf="!checkplay&&currentIndex==i" >pause_circle_outline</mat-icon>
+        <mat-icon *ngIf="checkplay&&currentIndex==i" >play_circle_outline</mat-icon>
+        <mat-icon *ngIf="currentIndex!=i" >play_circle_outline</mat-icon>
       </div>
-      <div class="body">
-        <h3 class="title">{{s.name}}</h3>
+      <div class="body" (click)="playThis(i)">
+        <h3 >{{s.name}}</h3>
       </div>
-      <div class="body">
-        <h3 class="title">Ca sĩ :{{s.singer}}</h3>
+      <div class="body" (click)="playThis(i)">
+        <h3 >Ca sĩ :{{s.singer}}</h3>
+      </div>
+      <div class="body" (click)="playThis(i)">
+        <h3 >Lượt nghe :{{s.count}}</h3>
+      </div>
+      <div class="body" (click)="playThis(i)">
+        <h3 >Lượt like :{{s.countLike}}</h3>
       </div>
       <div class="option">
         <mat-icon>more_horiz</mat-icon>
