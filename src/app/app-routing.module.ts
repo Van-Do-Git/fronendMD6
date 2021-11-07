@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PlaylistComponent} from "./playlist/playlist.component";
-import {LoginComponent} from "./login/login.component";
-import {RegitryComponent} from "./regitry/regitry.component";
-import {SongComponent} from "./song/song.component";
-import {SonglistComponent} from "./songlist/songlist.component";
+import {LoginComponent} from "./user/login/login.component";
+import {RegitryComponent} from "./user/regitry/regitry.component";
+import {SongComponent} from "./user/song/song.component";
+import {SonglistComponent} from "./user/songlist/songlist.component";
 
 const routes: Routes = [
   {path: '', component: PlaylistComponent},

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/compat/storage";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {MusicService} from "../service/music.service";
+import {MusicService} from "../../service/music.service";
 
 @Component({
   selector: 'app-song',

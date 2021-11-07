@@ -44,10 +44,17 @@ export class MusicService {
     return this.http.get<any>(this.API_CLIENT + '/likes');
   }
 
-  updateSong(song:any): Observable<any> {
-    console.log("co vao day khong?")
-    return this.http.put<any>(this.API_CLIENT + '/updateView',song);
+  updateSong(song: any): Observable<any> {
+    return this.http.put<any>(this.API_CLIENT + '/updateView', song);
   }
 
   checkLogin$ = new BehaviorSubject<string>('');
+
+  commentSong(comment: Comment): Observable<any> {
+    return this.http.post(this.API_SONG + '/comment', comment);
+  }
+
+  findAllComment(idSong: any) {
+    return this.http.get(this.API_CLIENT+'/comment/'+idSong)
+  }
 }

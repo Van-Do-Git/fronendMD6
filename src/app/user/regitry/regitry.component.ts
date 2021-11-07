@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router, Routes} from "@angular/router";
-import {MusicService} from "../service/music.service";
+import {MusicService} from "../../service/music.service";
 
 @Component({
   selector: 'app-regitry',

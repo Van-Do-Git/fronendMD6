@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MusicService} from "../service/music.service";
+import {MusicService} from "../../service/music.service";
 import {Observable} from "rxjs";
 import * as moment from "moment";
 

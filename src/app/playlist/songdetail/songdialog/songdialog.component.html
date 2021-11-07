@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Phản hồi bài hát: {{data.name}}</h2>
+<mat-dialog-content>
+
+    <form [formGroup]="formdata" (ngSubmit)="onSubmit()" *ngIf="idAccount">
+      <div >
+        <mat-form-field style="width: 350px" appearance="outline">
+          <mat-label>Bình luận:</mat-label>
+          <input formControlName="text" matInput placeholder="Comment..." required>
+          <mat-error>The name is required!</mat-error>
+          <button matSuffix type="submit" [disabled]="!formdata.valid"><mat-icon>send</mat-icon></button>
+        </mat-form-field>
+        <input formControlName="idAccount" style="display: none" [(ngModel)]="idAccount">
+        <input formControlName="idSong" style="display: none" [(ngModel)]="idSong">
+      </div>
+    </form>
+
+  <div class="row" *ngFor="let comment of commentList">
+    <div class="col-2">
+      <img width="35px" height="auto" src="{{comment.account.avatar.path}}">
+    </div>
+    <div class="col-2">
+      <p>{{comment.account.fullName}}</p>
+    </div>
+    <div class="col-8">
+      <p>{{comment.text}}</p>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions style="padding-left: 75%">
+  <button class="btn btn-warning" mat-dialog-close >Cancel</button>
+</mat-dialog-actions>

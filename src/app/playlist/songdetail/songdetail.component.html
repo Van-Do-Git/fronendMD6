@@ -1,0 +1,29 @@
+<div>
+  <mat-card class="example-card" style="margin: 10px">
+    <mat-grid-list cols="11" rowHeight="50px">
+      <mat-grid-tile colspan="3" rowspan="1">
+       <span>Tên bài hát {{song.name}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="3" rowspan="1">
+        Tên ca sĩ: {{song.singer}}
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="1">
+        Lượt nghe: {{song.count}}
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        Lượt thích: {{song.countLike}}
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <button mat-button *ngIf="idAccount">
+          <mat-icon *ngIf="!  liked" (click)="likeThis()">favorite</mat-icon>
+          <mat-icon *ngIf="liked" (click)="unLikeThis()" color="accent">favorite</mat-icon>
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1" style="padding-left: 50px">
+        <button mat-button >
+         <mat-icon (click)="openDialog()">comment</mat-icon>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+</div>
