@@ -1,3 +1,10 @@
-<div *ngFor="let s of songlist">
-  <app-songdetail [song]="s"></app-songdetail>
+<div>
+  <mat-card style="text-align: center;color: #2c0101">
+    <button mat-button style="font-size: 22px">Top Bài Hát Nghe Nhiều Nhất</button>
+  </mat-card>
 </div>
+<div *ngFor="let s of songlist,index as i" [ngClass]="{'play':currentIndex==i}">
+  <app-songdetail [song]="s" ></app-songdetail>
+</div>
+<div style="height: 20%;width: 100%"></div>
+<app-pluginplay [songs]="songlist" (eventEmitter)="playCurrentIndex($event)"></app-pluginplay>

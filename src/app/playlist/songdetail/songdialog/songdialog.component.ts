@@ -16,8 +16,6 @@ export class SongdialogComponent implements OnInit {
   idSong: any;
   public formdata = this.formBuilder.group({
     text: ['', Validators.required],
-    idAccount: [''],
-    idSong: ['']
   })
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, private musicsv: MusicService) {
@@ -32,14 +30,17 @@ export class SongdialogComponent implements OnInit {
   resetCommentList(){
     this.musicsv.findAllComment(this.idSong).subscribe(list=>{
       this.commentList = list;
-      console.log("comment", this.commentList)
     })
   }
   onSubmit() {
-    this.musicsv.commentSong(this.formdata.value).subscribe(()=>{
-      this.formdata.value.text='';
-      this.resetCommentList()
-      console.log("list moi",this.commentList)
+    this.comment = {
+      text: this.formdata.value.text,
+      idAccount: this.idAccount,
+      idSong: this.idSong
+    }
+    this.musicsv.commentSong(this.comment).subscribe(()=>{
+      this.formdata.reset();
+      this.resetCommentList();
     })
   }
 }

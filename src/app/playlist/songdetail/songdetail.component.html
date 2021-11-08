@@ -1,8 +1,8 @@
 <div>
-  <mat-card class="example-card" style="margin: 10px">
-    <mat-grid-list cols="11" rowHeight="50px">
-      <mat-grid-tile colspan="3" rowspan="1">
-       <span>Tên bài hát {{song.name}}</span>
+  <mat-card class="example-card" style="margin: 20px">
+    <mat-grid-list cols="11" rowHeight="35px">
+      <mat-grid-tile  colspan="3" rowspan="1" (click)="playThisSong(song)">
+       <button mat-button >Tên bài hát {{song.name}}</button>
       </mat-grid-tile>
       <mat-grid-tile colspan="3" rowspan="1">
         Tên ca sĩ: {{song.singer}}
@@ -14,9 +14,9 @@
         Lượt thích: {{song.countLike}}
       </mat-grid-tile>
       <mat-grid-tile colspan="1" rowspan="1">
-        <button mat-button *ngIf="idAccount">
-          <mat-icon *ngIf="!  liked" (click)="likeThis()">favorite</mat-icon>
-          <mat-icon *ngIf="liked" (click)="unLikeThis()" color="accent">favorite</mat-icon>
+        <button mat-button *ngIf="checklogin">
+          <mat-icon *ngIf="!liked" (click)="likeThis(song.id)">favorite</mat-icon>
+          <mat-icon *ngIf="liked" (click)="unLikeThis(song.id)" color="accent">favorite</mat-icon>
         </button>
       </mat-grid-tile>
       <mat-grid-tile colspan="1" rowspan="1" style="padding-left: 50px">

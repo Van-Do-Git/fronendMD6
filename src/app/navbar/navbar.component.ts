@@ -30,7 +30,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.musicsv.checkLogin$.subscribe(data => {
-      console.log("day la data", data)
       if (data == 'ok') {
         this.checklogin = true;
         this.showInFor()
@@ -42,6 +41,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   logout() {
     window.sessionStorage.clear();
     this.checklogin = false;
-    this.r.navigate(['/']);
+    this.r.navigate(['/']).then(()=>{
+      window.location.reload()
+    });
   }
 }

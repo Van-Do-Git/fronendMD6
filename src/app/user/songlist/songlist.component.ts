@@ -15,10 +15,7 @@ export class SonglistComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.musicsv.getMySongList(Number(window.sessionStorage.getItem("ID_KEY")))
-      .subscribe(data => {
-        this.songs = data;
-      })
+    this.getListSong();
     this.currentIndex = 0;
     this.currentTime = 0;
     this.totalTime = 0;
@@ -90,8 +87,8 @@ export class SonglistComponent implements OnInit, OnDestroy {
       this.audio.load();
       this.audio.play();
       const handler = (event: Event) => {
-        this.currentTime = moment.utc(this.audio.currentTime*1000).format("mm:ss");
-        this.totalTime = moment.utc(this.audio.duration*1000).format("mm:ss");
+        this.currentTime = moment.utc(this.audio.currentTime * 1000).format("mm:ss");
+        this.totalTime = moment.utc(this.audio.duration * 1000).format("mm:ss");
         this.totalRang = this.audio.duration;
         this.currentRange = this.audio.currentTime;
         if (this.audio.currentTime == this.audio.duration) {
@@ -123,6 +120,13 @@ export class SonglistComponent implements OnInit, OnDestroy {
     this.audio.currentTime = Number(myRange.value);
   }
 
+  getListSong() {
+    this.musicsv.getMySongList(Number(window.sessionStorage.getItem("ID_KEY")))
+      .subscribe(data => {
+        this.songs = data;
+      })
+  }
+
   ngOnDestroy(): void {
     this.audio.pause();
     this.audio.currentTime = 0;
@@ -132,5 +136,18 @@ export class SonglistComponent implements OnInit, OnDestroy {
   playThis(i: number) {
     this.currentIndex = i - 1;
     this.next();
+  }
+
+  editSong() {
+
+  }
+
+  deleteSong(id: any): void {
+    const verify = confirm('Bạn có chắc chắn muốn xóa?');
+    if (verify) {
+      this.musicsv.deleteSong(id).subscribe(() => {
+        this.getListSong();
+      });
+    }
   }
 }

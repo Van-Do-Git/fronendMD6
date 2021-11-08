@@ -44,17 +44,34 @@ export class MusicService {
     return this.http.get<any>(this.API_CLIENT + '/likes');
   }
 
-  updateSong(song: any): Observable<any> {
-    return this.http.put<any>(this.API_CLIENT + '/updateView', song);
+  updateSong(idSong: any): Observable<any> {
+    return this.http.put<any>(this.API_CLIENT + '/updateView', idSong);
   }
 
   checkLogin$ = new BehaviorSubject<string>('');
-
+  checkCurrent$ = new BehaviorSubject<string>('');
   commentSong(comment: Comment): Observable<any> {
     return this.http.post(this.API_SONG + '/comment', comment);
   }
 
   findAllComment(idSong: any) {
-    return this.http.get(this.API_CLIENT+'/comment/'+idSong)
+    return this.http.get(this.API_CLIENT + '/comment/' + idSong)
   }
+
+  likeThis(like: any): Observable<any> {
+    return this.http.post(this.API_SONG + '/like', like)
+  }
+
+  unLike(idLked:any):Observable<any>{
+    return this.http.delete(this.API_SONG+'/like/'+idLked)
+  }
+
+  findSong(idSong:any):Observable<any>{
+    return this.http.get(this.API_SONG+'/song/'+idSong)
+  }
+
+  deleteSong(id: any): Observable<any>{
+    return this.http.delete(this.API_SONG + '/delete/' + id );
+  }
+
 }

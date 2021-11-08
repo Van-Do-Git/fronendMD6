@@ -13,6 +13,8 @@ import {MusicService} from "../../service/music.service";
 export class CountComponent implements OnInit {
 
   songlist: any;
+  currentIndex = 0;
+
   constructor(private musicServiec: MusicService) {
 
   }
@@ -27,6 +29,9 @@ export class CountComponent implements OnInit {
     })
   }
 
-  playCurrent(song: any) {
+  playCurrentIndex(currentIndex: any) {
+    this.currentIndex = currentIndex;
+    this.musicServiec.updateSong(this.songlist[currentIndex].id).subscribe(()=>{});
+    this.loadPage();
   }
 }
