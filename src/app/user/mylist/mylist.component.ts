@@ -34,6 +34,7 @@ export class MylistComponent implements OnInit {
     this.idAccount = window.sessionStorage.getItem("ID_KEY");
     this.musicSv.findAllPlaylist(this.idAccount).subscribe(data => {
       this.playlists = data;
+      console.log(data)
     })
   }
 

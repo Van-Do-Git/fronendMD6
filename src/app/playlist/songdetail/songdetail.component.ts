@@ -22,7 +22,9 @@ export class SongdetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.checkLogin();
-    this.checkLike(this.song);
+    if(this.checklogin){
+      this.checkLike(this.song);
+    }
   }
 
   checkLogin() {
@@ -34,11 +36,13 @@ export class SongdetailComponent implements OnInit, OnDestroy {
 
   checkLike(song: any) {
     this.liked = false;
-    for (let like of song.likeList) {
-      if (like.account.id == this.idAccount) {
-        this.liked = true;
-        this.idLiked = like.id;
-        return;
+    if(song.likeList.length>0){
+      for (let like of song.likeList) {
+        if (like.account.id == this.idAccount) {
+          this.liked = true;
+          this.idLiked = like.id;
+          return;
+        }
       }
     }
   }

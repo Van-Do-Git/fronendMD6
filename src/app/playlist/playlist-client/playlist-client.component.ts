@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MusicService} from "../../service/music.service";
-import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -17,8 +16,7 @@ export class PlaylistClientComponent implements OnInit {
 
 
   constructor(private atRouter: ActivatedRoute,
-              private musicsv: MusicService,
-              private dialog: MatDialog) {
+              private musicsv: MusicService) {
   }
 
   ngOnInit(): void {
@@ -31,16 +29,16 @@ export class PlaylistClientComponent implements OnInit {
 
 
   loadPage() {
-    console.log("load page")
     this.musicsv.findPlaylistById(this.idPlaylist).subscribe(data => {
       this.playlist = data;
-      console.log(data)
       this.songlist = this.playlist.songs;
     })
   }
 
   playCurrentIndex(currentIndex: any) {
+    console.log("co vao up date view ko?")
     this.currentIndex = currentIndex;
+    this.musicsv.updateSong(this.songlist[currentIndex].id).subscribe(()=>{});
     this.loadPage();
   }
 }

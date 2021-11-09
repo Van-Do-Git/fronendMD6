@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SongdialogComponent} from "../songdetail/songdialog/songdialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MusicService} from "../../service/music.service";
 import {PlaylistDialogComponent} from "./playlist-dialog/playlist-dialog.component";
@@ -22,8 +21,11 @@ export class ListPlayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.likeList = this.playlist.likeList;
     this.checkLogin();
-    this.checkLike(this.playlist);
+    if (this.checklogin) {
+      this.checkLike(this.playlist)
+    }
   }
 
   openDialog() {
@@ -42,11 +44,13 @@ export class ListPlayComponent implements OnInit {
 
   checkLike(playlist: any) {
     this.liked = false;
-    for (let like of playlist.likeList) {
-      if (like.account.id == this.idAccount) {
-        this.liked = true;
-        this.idLiked = like.id;
-        return;
+    if (playlist.likeList.length > 0) {
+      for (let like of playlist.likeList) {
+        if (like.account.id == this.idAccount) {
+          this.liked = true;
+          this.idLiked = like.id;
+          return;
+        }
       }
     }
   }
@@ -70,7 +74,6 @@ export class ListPlayComponent implements OnInit {
   }
 
   unLikeThis(idPlaylist: any) {
-    console.log("co vao day ko?")
     this.muservice.unlikePlaylist(this.idLiked).subscribe(() => {
       this.getPlaylist(idPlaylist)
     })

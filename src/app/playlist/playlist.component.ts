@@ -21,6 +21,7 @@ export class PlaylistComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.musicService.findAllPlaylistNew().subscribe(data => {
       this.allPlaylist = data;
+      console.log("day la ta ca play list",data)
     })
   }
 
