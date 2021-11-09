@@ -37,7 +37,7 @@ export class PlaylistDialogComponent implements OnInit {
       idAccount: this.idAccount,
       idPlaylist: this.idPlaylist
     }
-    this.musicsv.commentSong(this.comment).subscribe(()=>{
+    this.musicsv.commentPlaylist(this.comment).subscribe(()=>{
       this.formdata.reset();
       this.resetCommentList();
     })

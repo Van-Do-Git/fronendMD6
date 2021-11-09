@@ -99,15 +99,28 @@ export class MusicService {
   removeSong(deletethis: RemoveSong) {
     return this.http.put(this.API_SONG + '/removeSong/', deletethis)
   }
-  findPlaylistById(id:any){
-    return this.http.get(this.API_CLIENT+'/playlist/'+id)
+
+  findPlaylistById(id: any) {
+    return this.http.get(this.API_CLIENT + '/playlist/' + id)
   }
 
   findAllPlaylistNew() {
-    return this.http.get(this.API_CLIENT+'/playlists')
+    return this.http.get(this.API_CLIENT + '/playlists')
   }
 
   findAllCommentOfPlaylist(idPlaylist: any) {
-    return this.http.get(this.API_CLIENT+'/playlistComment/'+idPlaylist)
+    return this.http.get(this.API_CLIENT + '/playlistComment/' + idPlaylist)
+  }
+
+  commentPlaylist(comment: Comment): Observable<any> {
+    return this.http.post(this.API_SONG + '/playlistComment', comment);
+  }
+
+  likeThisPlaylist(like: any) {
+    return this.http.post(this.API_SONG + '/likePlaylist/', like)
+  }
+  unlikePlaylist(idLike:any){
+    console.log('co vao day ko?')
+    return this.http.delete(this.API_SONG +'/unlike/'+idLike)
   }
 }
