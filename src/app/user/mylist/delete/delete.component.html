@@ -1,1 +1,7 @@
-<p>delete works!</p>
+<h1>Bạn chắc chắn muốn xóa không?</h1>
+<mat-card >
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" [mat-dialog-close]="false" >NO</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true" >YES</button>
+  </mat-dialog-actions>
+</mat-card>

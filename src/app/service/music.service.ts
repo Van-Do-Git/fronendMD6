@@ -50,6 +50,7 @@ export class MusicService {
 
   checkLogin$ = new BehaviorSubject<string>('');
   checkCurrent$ = new BehaviorSubject<string>('');
+
   commentSong(comment: Comment): Observable<any> {
     return this.http.post(this.API_SONG + '/comment', comment);
   }
@@ -62,16 +63,27 @@ export class MusicService {
     return this.http.post(this.API_SONG + '/like', like)
   }
 
-  unLike(idLked:any):Observable<any>{
-    return this.http.delete(this.API_SONG+'/like/'+idLked)
+  unLike(idLked: any): Observable<any> {
+    return this.http.delete(this.API_SONG + '/like/' + idLked)
   }
 
-  findSong(idSong:any):Observable<any>{
-    return this.http.get(this.API_SONG+'/song/'+idSong)
+  findSong(idSong: any): Observable<any> {
+    return this.http.get(this.API_SONG + '/song/' + idSong)
   }
 
-  deleteSong(id: any): Observable<any>{
-    return this.http.delete(this.API_SONG + '/delete/' + id );
+  deleteSong(id: any): Observable<any> {
+    return this.http.delete(this.API_SONG + '/delete/' + id);
   }
 
+  createPlaylist(newList: any) {
+    return this.http.post(this.API_SONG + '/creatlist/', newList)
+  }
+
+  findAllPlaylist(idAccount: any) {
+    return this.http.get(this.API_SONG + '/playlists/' + idAccount)
+  }
+
+  getPlaylist(idPlaylist: number) {
+    return this.http.get(this.API_SONG + '/getplaylist/' + idPlaylist)
+  }
 }

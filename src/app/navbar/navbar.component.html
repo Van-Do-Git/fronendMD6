@@ -22,6 +22,7 @@
   <a routerLink="login" *ngIf="!checklogin"><button mat-button>Login</button></a>
   <a routerLink="create-song" *ngIf="checklogin"><button mat-button>Create Song</button></a>
   <a routerLink="songs" *ngIf="checklogin" ><button mat-button>My song list</button></a>
+  <a routerLink="playlist" *ngIf="checklogin" ><button mat-button>My Playlist</button></a>
   <a>
     <form class="d-flex">
       <select class="form-control me-2"  style="width: 80px">

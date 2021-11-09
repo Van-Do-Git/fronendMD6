@@ -36,6 +36,13 @@ import { PluginplayComponent } from './playlist/pluginplay/pluginplay.component'
 import {MatDialogModule} from "@angular/material/dialog";
 import { SongdetailComponent } from './playlist/songdetail/songdetail.component';
 import { SongdialogComponent } from './playlist/songdetail/songdialog/songdialog.component';
+import { MylistComponent } from './user/mylist/mylist.component';
+import { CreatlistComponent } from './user/mylist/creatlist/creatlist.component';
+import { ListdetailComponent } from './user/mylist/listdetail/listdetail.component';
+import { DeleteComponent } from './user/mylist/delete/delete.component';
+import { ManagersongComponent } from './user/mylist/managersong/managersong.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -51,7 +58,12 @@ import { SongdialogComponent } from './playlist/songdetail/songdialog/songdialog
     CountlikeComponent,
     PluginplayComponent,
     SongdetailComponent,
-    SongdialogComponent
+    SongdialogComponent,
+    MylistComponent,
+    CreatlistComponent,
+    ListdetailComponent,
+    DeleteComponent,
+    ManagersongComponent
   ],
   imports: [
     MatInputModule,
@@ -76,6 +88,8 @@ import { SongdialogComponent } from './playlist/songdetail/songdialog/songdialog
     MatMenuModule,
     MatCarouselModule.forRoot(),
     MatDialogModule,
+    MatSelectModule,
+    MatListModule,
 
   ],
   providers: [httpInterceptorProviders],

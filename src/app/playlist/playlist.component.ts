@@ -9,9 +9,6 @@ import {MusicService} from "../service/music.service";
 })
 
 export class PlaylistComponent implements OnInit, OnDestroy, AfterViewInit {
-  nameSong: any;
-  currenSong: any;
-  audio = new Audio();
   constructor(private musicService: MusicService) {
 
   }
@@ -22,33 +19,33 @@ export class PlaylistComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
 
   }
-
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
+  //
+  // tiles: Tile[] = [
+  //   {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+  //   {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+  //   {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+  //   {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+  // ];
 
   ngOnDestroy(): void {
-    this.audio.pause();
-    this.audio.src="";
+    // this.audio.pause();
+    // this.audio.src="";
   }
 
 
   playSong($event: any) {
-    this.currenSong = $event;
-    this.nameSong = this.currenSong.name;
-    this.audio.src = this.currenSong.path;
-    this.audio.load();
-    this.audio.play();
+    // this.currenSong = $event;
+    // this.nameSong = this.currenSong.name;
+    // this.audio.src = this.currenSong.path;
+    // this.audio.load();
+    // this.audio.play();
   }
 }
 
 export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
+  // color: string;
+  // cols: number;
+  // rows: number;
+  // text: string;
 }
 

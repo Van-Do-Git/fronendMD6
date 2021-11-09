@@ -15,8 +15,6 @@
           <div class="mb-3">
             <label class="form-label">File mp3</label>
             <input formControlName="path" type="text" [(ngModel)]="downloadURL" style="display: none">
-<!--            <input formControlName="count" type="number" [(ngModel)]="count" style="display: none">-->
-<!--            <input formControlName="idAccount" type="number" [(ngModel)]="idAccounts" style="display: none">-->
             <input type="file" class="form-control" (change)="onFileChanged($event)" accept="audio/*">
             <mat-progress-bar *ngIf="checkUploadFile" mode="indeterminate"></mat-progress-bar>
           </div>

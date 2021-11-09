@@ -1,41 +1,10 @@
-<h1 class="titleSong">Bài Hát Mới Nhất</h1>
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource3">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Name Song</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-button (click)="playCurrent(element)">
-          <mat-icon style="color: #3cf501">play_circle_outline</mat-icon>{{ element.name}}
-        </button>
-      </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Singer</th>
-      <td mat-cell *matCellDef="let element"> {{element.singer}} </td>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> View</th>
-      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Like</th>
-      <td mat-cell *matCellDef="let element"> {{element.countLike}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[10]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
-  </mat-paginator>
+<div>
+  <mat-card style="text-align: center;color: #2c0101">
+    <button mat-button style="font-size: 22px">Bài Hát Nghe Nhiều Nhất</button>
+  </mat-card>
 </div>
+<div *ngFor="let s of songlist,index as i" [ngClass]="{'play':currentIndex==i}">
+  <app-songdetail [song]="s" ></app-songdetail>
+</div>
+<div style="height: 20%;width: 100%"></div>
+<app-pluginplay [songs]="songlist" (eventEmitter)="playCurrentIndex($event)"></app-pluginplay>

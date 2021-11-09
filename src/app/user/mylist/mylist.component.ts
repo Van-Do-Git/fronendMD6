@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {CreatlistComponent} from "./creatlist/creatlist.component";
+import {MusicService} from "../../service/music.service";
+import {DeleteComponent} from "./delete/delete.component";
+
 
 @Component({
   selector: 'app-mylist',
@@ -7,9 +12,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MylistComponent implements OnInit {
 
-  constructor() { }
+  idAccount: any;
+  likeList: any;
+  like: any;
+  playlists: any;
 
-  ngOnInit(): void {
+  constructor(public dialog: MatDialog, private musicSv: MusicService) {
   }
 
+
+  ngOnInit(): void {
+
+    this.reloadPage()
+  }
+
+
+  getSong() {
+    this.reloadPage();
+  }
+
+  ngOnDestroy(): void {
+
+  }
+
+
+  private reloadPage() {
+    this.idAccount = window.sessionStorage.getItem("ID_KEY");
+    this.musicSv.findAllPlaylist(this.idAccount).subscribe(data => {
+      this.playlists = data;
+    })
+  }
+
+  openDialog2(idPlaylist:any) {
+    const dialogRef = this.dialog.open(DeleteComponent);
+    dialogRef.afterClosed().subscribe(resulf => {
+      this.reloadPage();
+    });
+  }
+  openDialog() {
+    const dialogRef = this.dialog.open(CreatlistComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.reloadPage();
+    });
+  }
 }
