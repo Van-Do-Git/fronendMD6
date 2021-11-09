@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Account} from "../../model/account";
 import {Song} from "../../model/song";
+import {RemoveSong} from "../../model/removeSong";
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,29 @@ export class MusicService {
   }
 
   getPlaylist(idPlaylist: number) {
-    return this.http.get(this.API_SONG + '/getplaylist/' + idPlaylist)
+    return this.http.get(this.API_SONG + '/playlist/' + idPlaylist)
+  }
+
+  searchSongByName(name: string) {
+    return this.http.get(this.API_SONG + '/findSongByName/' + name)
+  }
+
+  addSongToList(playList: any) {
+    return this.http.post(this.API_SONG + '/addSongToList', playList)
+  }
+
+  removeSong(deletethis: RemoveSong) {
+    return this.http.put(this.API_SONG + '/removeSong/', deletethis)
+  }
+  findPlaylistById(id:any){
+    return this.http.get(this.API_CLIENT+'/playlist/'+id)
+  }
+
+  findAllPlaylistNew() {
+    return this.http.get(this.API_CLIENT+'/playlists')
+  }
+
+  findAllCommentOfPlaylist(idPlaylist: any) {
+    return this.http.get(this.API_CLIENT+'/playlistComment/'+idPlaylist)
   }
 }

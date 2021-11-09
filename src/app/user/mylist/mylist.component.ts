@@ -22,13 +22,7 @@ export class MylistComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.reloadPage()
-  }
-
-
-  getSong() {
-    this.reloadPage();
   }
 
   ngOnDestroy(): void {

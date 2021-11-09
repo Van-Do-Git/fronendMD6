@@ -43,6 +43,9 @@ import { DeleteComponent } from './user/mylist/delete/delete.component';
 import { ManagersongComponent } from './user/mylist/managersong/managersong.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatListModule} from "@angular/material/list";
+import { ListPlayComponent } from './playlist/list-play/list-play.component';
+import { PlaylistClientComponent } from './playlist/playlist-client/playlist-client.component';
+import { PlaylistDialogComponent } from './playlist/list-play/playlist-dialog/playlist-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import {MatListModule} from "@angular/material/list";
     CreatlistComponent,
     ListdetailComponent,
     DeleteComponent,
-    ManagersongComponent
+    ManagersongComponent,
+    ListPlayComponent,
+    PlaylistClientComponent,
+    PlaylistDialogComponent
   ],
   imports: [
     MatInputModule,

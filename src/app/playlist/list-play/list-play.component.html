@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <img src="{{playlist.image.path}}" width="220px" height="150px">
+    </div>
+    <div class="col-4">
+      {{playlist.name}}
+    </div>
+    <div class="col-2">
+      <p>
+        {{playlist.likeList.length}}
+      </p>
+    </div>
+    <div class="col-2">
+      <mat-icon [routerLink]="['/playlist/',playlist.id]">play_circle_outline</mat-icon>
+    </div>
+    <div class="col-1">
+      <mat-icon>favorite</mat-icon>
+    </div>
+    <div class="col-1">
+      <mat-icon (click)="openDialog()">comment</mat-icon>
+    </div>
+  </div>
+</div>

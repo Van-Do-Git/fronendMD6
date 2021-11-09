@@ -59,17 +59,13 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="editSong()">
-            <mat-icon>edit</mat-icon>
-            <span>Sửa bài hát</span>
-          </button>
           <button mat-menu-item (click)="deleteSong(s.id)">
             <mat-icon>delete</mat-icon>
-            <span>Xoá bài hát</span>
+            <span>Xóa khỏi danh sách</span>
           </button>
         </mat-menu>
       </div>
     </div>
   </div>
 </mat-card>
-<button (click)="openDialog()" class="btn btn-success" style="position: absolute;right: 10px">Thêm bài hát</button>
+<button (click)="openDialog()" class="btn btn-success" style="position: absolute;right: 20px">Thêm bài hát</button>

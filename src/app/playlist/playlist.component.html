@@ -62,10 +62,10 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
-  <mat-grid-list cols="4" rowHeight="200px">
-    <mat-grid-tile colspan="1" rowspan="1">
+  <mat-grid-list cols="4" >
+    <mat-grid-tile colspan="1" rowspan="1" *ngFor="let p of allPlaylist">
       <mat-card style="margin: 15px">
-
+        <app-list-play [playlist]="p" ></app-list-play>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

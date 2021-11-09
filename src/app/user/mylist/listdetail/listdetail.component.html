@@ -3,22 +3,23 @@
     <mat-icon style="color: red">cancel</mat-icon>
   </button>
 </mat-dialog-actions>
-<form class="d-flex">
+<form class="d-flex" [formGroup]="formdata" (ngSubmit)="onSubmit()">
   <select class="form-control me-2" style="width: 80px">
     <option>Ca sĩ</option>
     <option>Bài hát</option>
   </select>
-  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 300px">
+  <input formControlName="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 300px">
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
 <div style="width: 380px;margin-top: 20px">
   <p>Kết quả tìm kiếm</p>
-  <input type="checkbox"  (change)="pushItem($event,'1')" >
-  <input type="checkbox"  (change)="pushItem($event,'2')" >
-  <input type="checkbox"  (change)="pushItem($event,'3')" >
-  <input type="checkbox"  (change)="pushItem($event,'4')" >
+  <div class="form-check" *ngFor="let s of songs">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="pushItem($event,s.id)">
+    <label class="form-check-label" for="exampleCheck1">Tên bài hát: {{s.name}}</label>&nbsp;&nbsp;&nbsp;
+    <label class="form-check-label" for="exampleCheck1">Ca sĩ: {{s.singer}}</label>
+  </div>
 </div>
 
-<button mat-button *ngIf="chekcItem">
-  <mat-icon style="color: red">ADD</mat-icon>
+<button (click)="addSong()" class="btn btn-success" *ngIf="chekcItem" style="margin-left: 70%;">
+  Add to playlist
 </button>

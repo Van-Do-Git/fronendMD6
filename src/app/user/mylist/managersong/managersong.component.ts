@@ -4,8 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import * as moment from "moment";
 import {Observable} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
-import {CreatlistComponent} from "../creatlist/creatlist.component";
 import {ListdetailComponent} from "../listdetail/listdetail.component";
+import {RemoveSong} from "../../../../model/removeSong";
 
 @Component({
   selector: 'app-managersong',
@@ -14,6 +14,7 @@ import {ListdetailComponent} from "../listdetail/listdetail.component";
 })
 export class ManagersongComponent implements OnInit {
   songs: any;
+  deletethis: RemoveSong = {};
   idPlaylist: any;
   currentIndex = 0;
   currentTime: any;
@@ -153,12 +154,16 @@ export class ManagersongComponent implements OnInit {
   }
 
   deleteSong(id: any): void {
-
+    this.deletethis.idPlaylist = this.idPlaylist;
+    this.deletethis.idSong = id;
+    this.musicsv.removeSong(this.deletethis).subscribe(() => {
+      this.getListSong(this.idPlaylist);
+    })
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(ListdetailComponent, {
-      data : this.idPlaylist
+      data: this.idPlaylist
     });
     dialogRef.afterClosed().subscribe(() => {
       this.getListSong(this.idPlaylist);

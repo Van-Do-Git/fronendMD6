@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {MusicService} from "../../../service/music.service";
 
 
@@ -12,10 +12,16 @@ import {MusicService} from "../../../service/music.service";
 export class ListdetailComponent implements OnInit {
   songs: any;
   selectItem: any;
-  chekcItem:any;
+  chekcItem: any;
+  playlistAdd: any;
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, private musicsv: MusicService) {
   }
+
+  public formdata = this.formBuilder.group({
+    name: [''],
+  })
 
   ngOnInit(): void {
     this.selectItem = new Array<number>();
@@ -29,10 +35,29 @@ export class ListdetailComponent implements OnInit {
         return id != Number(idSong);
       })
     }
-    if(this.selectItem.length!=0){
+
+    if (this.selectItem.length != 0) {
       this.chekcItem = true;
-    }else {
+    } else {
       this.chekcItem = false;
     }
+  }
+
+  onSubmit() {
+    this.musicsv.searchSongByName(this.formdata.value.name).subscribe(data => {
+      this.songs = data;
+    })
+    this.formdata.reset('');
+  }
+
+  addSong() {
+    this.playlistAdd = {
+      idPlaylist: this.data,
+      idSongs: this.selectItem
+    }
+    this.musicsv.addSongToList(this.playlistAdd).subscribe(data => {
+      this.selectItem = new Array<number>();
+      this.chekcItem = false;
+    })
   }
 }
