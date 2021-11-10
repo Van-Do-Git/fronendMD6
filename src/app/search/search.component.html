@@ -1,0 +1,75 @@
+<div id="control" style="background-image: url(https://i.pinimg.com/originals/d0/96/fe/d096fe816480c44a6f3294b6d41be12f.jpg);">
+  <!-- Control -->
+  <br>
+  <p id="name-song" *ngIf="nameSong">Đang phát bài {{nameSong}}</p>
+  <mat-grid-list cols="5" rowHeight="35px">
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-icon style="color: aliceblue">repeat</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="prev()" colspan="1" rowspan="1">
+      <mat-icon style="color: aliceblue">skip_previous</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="play()" colspan="1" rowspan="1">
+      <mat-icon *ngIf="checkplay" style="color: aliceblue">play_circle_outline</mat-icon>
+      <mat-icon *ngIf="!checkplay" style="color: aliceblue">pause_circle_outline</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="next()" colspan="1" rowspan="1">
+      <mat-icon style="color: aliceblue">skip_next</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-icon style="color: aliceblue">shuffle</mat-icon>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- Range -->
+  <div id="slider-container">
+    <div id="progress-bar-cover">
+      <span style="color: white">{{currentTime}}</span>
+      <input type="range" min="0" max="{{totalRang}}" value="{{currentRange}}" id="range" #myRange
+             (input)="setProsess(myRange)">
+      <span style="color: white">{{totalTime}}</span>
+    </div>
+  </div>
+  <br>
+</div>
+
+<!-- List Music -->
+<mat-card>
+  <div class="playlist">
+    <div class="song" *ngFor="let s of songs;index as i" [ngClass]="{'play':currentIndex==i}">
+      <div class="thumb" (click)="playThis(i)">
+        <mat-icon *ngIf="!checkplay&&currentIndex==i" >pause_circle_outline</mat-icon>
+        <mat-icon *ngIf="checkplay&&currentIndex==i" >play_circle_outline</mat-icon>
+        <mat-icon *ngIf="currentIndex!=i" >play_circle_outline</mat-icon>
+      </div>
+      <div class="body" (click)="playThis(i)">
+        <h3 >{{s.name}}</h3>
+      </div>
+      <div class="body" (click)="playThis(i)">
+        <h3 >Ca sĩ :{{s.singer}}</h3>
+      </div>
+      <div class="body" (click)="playThis(i)">
+        <h3 >Lượt nghe :{{s.count}}</h3>
+      </div>
+      <div class="body" (click)="playThis(i)">
+        <h3 >Lượt like :{{s.countLike}}</h3>
+      </div>
+      <div class="option">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editSong()">
+            <mat-icon>edit</mat-icon>
+            <span>Sửa bài hát</span>
+          </button>
+          <button mat-menu-item (click)="deleteSong(s.id)">
+            <mat-icon>delete</mat-icon>
+            <span>Xoá bài hát</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</mat-card>
+

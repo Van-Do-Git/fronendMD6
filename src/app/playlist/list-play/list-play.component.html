@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12" [routerLink]="['/playlist/',playlist.id]">
       <img src="{{playlist.image.path}}" width="220px" height="150px">
     </div>
     <div class="col-12">
       {{playlist.name}}
     </div>
     <div class="col-3">
-      <mat-icon [routerLink]="['/playlist/',playlist.id]">play_circle_outline</mat-icon>
+      <mat-icon [routerLink]="['/playlist/',playlist.id]" style="color: red;font-size: 30px">play_circle_outline</mat-icon>
     </div>
     <div class="col-3">
       <p>

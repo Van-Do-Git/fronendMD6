@@ -46,6 +46,7 @@ import {MatListModule} from "@angular/material/list";
 import { ListPlayComponent } from './playlist/list-play/list-play.component';
 import { PlaylistClientComponent } from './playlist/playlist-client/playlist-client.component';
 import { PlaylistDialogComponent } from './playlist/list-play/playlist-dialog/playlist-dialog.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { PlaylistDialogComponent } from './playlist/list-play/playlist-dialog/pl
     ManagersongComponent,
     ListPlayComponent,
     PlaylistClientComponent,
-    PlaylistDialogComponent
+    PlaylistDialogComponent,
+    SearchComponent
   ],
   imports: [
     MatInputModule,

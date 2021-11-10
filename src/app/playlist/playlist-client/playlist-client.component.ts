@@ -36,7 +36,6 @@ export class PlaylistClientComponent implements OnInit {
   }
 
   playCurrentIndex(currentIndex: any) {
-    console.log("co vao up date view ko?")
     this.currentIndex = currentIndex;
     this.musicsv.updateSong(this.songlist[currentIndex].id).subscribe(()=>{});
     this.loadPage();

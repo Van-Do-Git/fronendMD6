@@ -1,5 +1,5 @@
 <div class="topnav" id="myTopnav">
-  <a *ngIf="checklogin" [matMenuTriggerFor]="menu" class="active"  >
+  <a *ngIf="checklogin" [matMenuTriggerFor]="menu" class="active">
     <img src="{{avartar}}" id="avatar">
     <button mat-button>{{fullnam}}</button>
     <mat-menu #menu="matMenu">
@@ -17,19 +17,32 @@
       </button>
     </mat-menu>
   </a>
-  <a routerLink=""><button mat-button>Home</button></a>
-  <a routerLink="registry" *ngIf="!checklogin"><button mat-button>Registry</button></a>
-  <a routerLink="login" *ngIf="!checklogin"><button mat-button>Login</button></a>
-  <a routerLink="create-song" *ngIf="checklogin"><button mat-button>Create Song</button></a>
-  <a routerLink="songs" *ngIf="checklogin" ><button mat-button>My song list</button></a>
-  <a routerLink="playlist" *ngIf="checklogin" ><button mat-button>My Playlist</button></a>
+  <a routerLink="">
+    <button mat-button>Home</button>
+  </a>
+  <a routerLink="registry" *ngIf="!checklogin">
+    <button mat-button>Registry</button>
+  </a>
+  <a routerLink="login" *ngIf="!checklogin">
+    <button mat-button>Login</button>
+  </a>
+  <a routerLink="create-song" *ngIf="checklogin">
+    <button mat-button>Create Song</button>
+  </a>
+  <a routerLink="songs" *ngIf="checklogin">
+    <button mat-button>My song list</button>
+  </a>
+  <a routerLink="playlist" *ngIf="checklogin">
+    <button mat-button>My Playlist</button>
+  </a>
   <a>
-    <form class="d-flex">
-      <select class="form-control me-2"  style="width: 80px">
-        <option>Ca sĩ</option>
-        <option>Bài hát</option>
+    <form class="d-flex" [formGroup]="formdata" (ngSubmit)="onSubmit()">
+      <select class="form-control me-2" style="width: 80px" formControlName="isNameOrSinger">
+        <option [value]=false>Ca sĩ</option>
+        <option [value]=true>Bài hát</option>
       </select>
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 300px">
+      <input formControlName="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+             style="width: 300px">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </a>
@@ -38,5 +51,6 @@
   </a>
 </div>
 
+<app-search></app-search>
 
 
