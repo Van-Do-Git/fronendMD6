@@ -15,8 +15,8 @@
       </mat-grid-tile>
       <mat-grid-tile colspan="1" rowspan="1">
         <button mat-button *ngIf="checklogin">
-          <mat-icon *ngIf="!liked" (click)="likeThis(song.id)" color="primary">favorite</mat-icon>
-          <mat-icon *ngIf="liked" (click)="unLikeThis(song.id)" color="accent">favorite</mat-icon>
+          <mat-icon *ngIf="!liked" (click)="likeThis(song.id)" color="primary" title="Thích">favorite</mat-icon>
+          <mat-icon *ngIf="liked" (click)="unLikeThis(song.id)" color="accent" title="Bỏ thích">favorite</mat-icon>
         </button>
       </mat-grid-tile>
       <mat-grid-tile colspan="1" rowspan="1" style="padding-left: 50px">

@@ -16,7 +16,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {httpInterceptorProviders} from "./security/token.interceptor";
 import {MatSliderModule} from "@angular/material/slider";
 import {SongComponent} from './user/song/song.component';
-import {AngularFireStorage, AngularFireStorageModule} from "@angular/fire/compat/storage";
+import { AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {MatProgressBarModule} from "@angular/material/progress-bar";

@@ -6,7 +6,7 @@
         <mat-form-field style="width: 350px" appearance="outline">
           <mat-label>Bình luận:</mat-label>
           <input formControlName="text" matInput placeholder="Comment..." required>
-          <mat-error>The name is required!</mat-error>
+          <mat-error>Không để trống</mat-error>
           <button matSuffix type="submit" [disabled]="!formdata.valid"><mat-icon>send</mat-icon></button>
         </mat-form-field>
       </div>
@@ -25,5 +25,5 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions style="padding-left: 75%">
-  <button class="btn btn-warning" mat-dialog-close >Cancel</button>
+  <button class="btn btn-warning" mat-dialog-close >Thoát</button>
 </mat-dialog-actions>
