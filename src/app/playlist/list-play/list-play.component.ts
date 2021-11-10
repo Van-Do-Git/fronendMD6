@@ -44,7 +44,8 @@ export class ListPlayComponent implements OnInit {
 
   checkLike(playlist: any) {
     this.liked = false;
-    if (playlist.likeList.length > 0) {
+
+    if (this.likeList != undefined) {
       for (let like of playlist.likeList) {
         if (like.account.id == this.idAccount) {
           this.liked = true;

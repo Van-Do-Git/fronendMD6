@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Account} from "../../model/account";
 import {Song} from "../../model/song";
@@ -126,6 +126,6 @@ export class MusicService {
     return this.http.post(this.API_CLIENT+'/search',value);
   }
   deletePlaylist(id: any) {
-    return this.http.delete(this.API_CLIENT+'/deletePlaylist/'+ id)
+    return this.http.delete(this.API_SONG+'/deletePlaylist/'+ id)
   }
 }

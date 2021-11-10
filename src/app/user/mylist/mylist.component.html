@@ -12,13 +12,13 @@
                 <img class="image" [src]="p.image.path">
                 <p>{{p.name}}</p>
                 <button mat-button>
-                  <mat-icon>edit</mat-icon>
+                  <mat-icon color="accent">edit</mat-icon>
                 </button>
                 <button mat-button (click)="openDialog2(p.id)">
-                  <mat-icon >delete</mat-icon>
+                  <mat-icon color="warn">delete</mat-icon>
                 </button>
                 <button mat-button [routerLink]="['/mylist/',p.id]">
-                  <mat-icon >add</mat-icon>
+                  <mat-icon color="primary">add</mat-icon>
                 </button>
               </div>
             </mat-card>
