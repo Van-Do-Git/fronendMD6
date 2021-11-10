@@ -16,7 +16,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   checklogin = false;
   avartar: any;
   fullnam: any;
-
+  songs: any;
+  isSearch = false;
   public formdata = this.formBuilder.group({
     isNameOrSinger: ['', Validators.required],
     name: ['', Validators.required],
@@ -57,8 +58,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    this.musicsv.search$.next(this.formdata.value);
-    this.r.navigate(['/search'])
+    this.isSearch = true;
+    this.musicsv.searchSongByNameOrSinger(this.formdata.value).subscribe(data => {
+      this.songs = data;
+    })
+    this.formdata.reset('');
+  }
+
+  closeSearch() {
+    this.isSearch = false;
+    this.songs = null;
   }
 
   changePassword() {
