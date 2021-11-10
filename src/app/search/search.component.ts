@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {MusicService} from "../service/music.service";
 import * as moment from "moment";
 import {Observable} from "rxjs";
@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit,AfterViewInit {
-
+  @Input()
   songs: any;
   search: any;
 

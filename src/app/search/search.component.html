@@ -32,7 +32,9 @@
   </div>
   <br>
 </div>
-
+<div>
+  <mat-card>Kết quả tìm kiếm</mat-card>
+</div>
 <!-- List Music -->
 <mat-card>
   <div class="playlist">
@@ -53,21 +55,6 @@
       </div>
       <div class="body" (click)="playThis(i)">
         <h3 >Lượt like :{{s.countLike}}</h3>
-      </div>
-      <div class="option">
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="editSong()">
-            <mat-icon>edit</mat-icon>
-            <span>Sửa bài hát</span>
-          </button>
-          <button mat-menu-item (click)="deleteSong(s.id)">
-            <mat-icon>delete</mat-icon>
-            <span>Xoá bài hát</span>
-          </button>
-        </mat-menu>
       </div>
     </div>
   </div>

@@ -12,11 +12,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   checklogin = false;
   avartar: any;
   fullnam: any;
-
+  songs: any;
+  isSearch = false;
   public formdata = this.formBuilder.group({
     isNameOrSinger: ['', Validators.required],
     name: ['', Validators.required],
   })
+
 
   constructor(private musicsv: MusicService, private r: Router, private formBuilder: FormBuilder) {
   }
@@ -53,6 +55,15 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    this.musicsv.search$.next(this.formdata.value);
+    this.isSearch = true;
+    this.musicsv.searchSongByNameOrSinger(this.formdata.value).subscribe(data => {
+      this.songs = data;
+    })
+    this.formdata.reset('');
+  }
+
+  closeSearch() {
+    this.isSearch = false;
+    this.songs = null;
   }
 }

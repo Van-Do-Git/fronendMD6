@@ -119,7 +119,10 @@ export class MusicService {
     return this.http.post(this.API_SONG + '/likePlaylist/', like)
   }
   unlikePlaylist(idLike:any){
-    console.log('co vao day ko?')
-    return this.http.delete(this.API_SONG +'/unlike/'+idLike)
+    return this.http.delete(this.API_SONG +'/unlike/'+idLike);
+  }
+
+  searchSongByNameOrSinger(value: any) {
+    return this.http.post(this.API_CLIENT+'/search',value);
   }
 }
