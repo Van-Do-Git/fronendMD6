@@ -54,6 +54,5 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     this.musicsv.search$.next(this.formdata.value);
-    this.r.navigate(['/search'])
   }
 }
