@@ -1,27 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12" [routerLink]="['/playlist/',playlist.id]">
       <img src="{{playlist.image.path}}" width="220px" height="150px">
     </div>
-    <div class="col-4">
+    <div class="col-12">
       {{playlist.name}}
     </div>
-<!--    <div class="col-2">-->
-<!--      <p>-->
-<!--        {{playlist.likeList.length}}-->
-<!--      </p>-->
-<!--    </div>-->
-    <div class="col-2">
-      <mat-icon [routerLink]="['/playlist/',playlist.id]">play_circle_outline</mat-icon>
+    <div class="col-3">
+      <mat-icon [routerLink]="['/playlist/',playlist.id]" style="color: red;font-size: 30px">play_circle_outline</mat-icon>
     </div>
-    <div class="col-2">
+    <div class="col-3">
+      <p>
+        {{playlist.likeList.length}} like
+      </p>
+    </div>
+    <div class="col-3">
       <button mat-button *ngIf="checklogin" style="position: relative; ;top: -6px">
-        <mat-icon *ngIf="!liked" (click)="likeThis(playlist.id)">favorite</mat-icon>
+        <mat-icon *ngIf="!liked" (click)="likeThis(playlist.id)" color="primary">favorite</mat-icon>
         <mat-icon *ngIf="liked" (click)="unLikeThis(playlist.id)" color="accent">favorite</mat-icon>
       </button>
     </div>
     <div class="col-2">
-      <mat-icon (click)="openDialog()" style="position: relative;left: 20px;top:2px">comment</mat-icon>
+      <mat-icon (click)="openDialog()" color="primary">comment</mat-icon>
     </div>
   </div>
 </div>

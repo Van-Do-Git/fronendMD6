@@ -13,7 +13,9 @@ export class MusicService {
   private API_ACCOUNT = environment.API_LOCAL + "/account";
   private API_SONG = environment.API_LOCAL + "/user";
   private API_CLIENT = environment.API_LOCAL + "/client";
-
+  checkLogin$ = new BehaviorSubject<string>('');
+  checkCurrent$ = new BehaviorSubject<string>('');
+  search$ = new BehaviorSubject<string>('');
   constructor(private http: HttpClient) {
   }
 
@@ -48,9 +50,6 @@ export class MusicService {
   updateSong(idSong: any): Observable<any> {
     return this.http.put<any>(this.API_CLIENT + '/updateView', idSong);
   }
-
-  checkLogin$ = new BehaviorSubject<string>('');
-  checkCurrent$ = new BehaviorSubject<string>('');
 
   commentSong(comment: Comment): Observable<any> {
     return this.http.post(this.API_SONG + '/comment', comment);

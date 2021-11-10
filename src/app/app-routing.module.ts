@@ -12,6 +12,7 @@ import {CanactiveGuard} from "./security/canactive.guard";
 import {MylistComponent} from "./user/mylist/mylist.component";
 import {ManagersongComponent} from "./user/mylist/managersong/managersong.component";
 import {PlaylistClientComponent} from "./playlist/playlist-client/playlist-client.component";
+import {SearchComponent} from "./search/search.component";
 
 const routes: Routes = [
   {path: '', component: PlaylistComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'like', component: CountlikeComponent},
   {path: 'latest', component: LatestComponent},
   {path: 'playlist/:id', component: PlaylistClientComponent},
+  {path: 'search', component: SearchComponent},
 ];
 
 @NgModule({

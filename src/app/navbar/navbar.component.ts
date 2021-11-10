@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {MusicService} from "../service/music.service";
 import {Router} from "@angular/router";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   avartar: any;
   fullnam: any;
 
-  constructor(private musicsv: MusicService, private r :Router) {
+  public formdata = this.formBuilder.group({
+    isNameOrSinger: ['', Validators.required],
+    name: ['', Validators.required],
+  })
+
+  constructor(private musicsv: MusicService, private r: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -41,8 +47,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   logout() {
     window.sessionStorage.clear();
     this.checklogin = false;
-    this.r.navigate(['/']).then(()=>{
+    this.r.navigate(['/']).then(() => {
       window.location.reload()
     });
+  }
+
+  onSubmit() {
+    this.musicsv.search$.next(this.formdata.value);
+    this.r.navigate(['/search'])
   }
 }

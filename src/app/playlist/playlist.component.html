@@ -1,72 +1,74 @@
-<div>
-  <mat-grid-list cols="1" rowHeight="100px">
-    <mat-grid-tile rowspan="1">
-      <mat-card style="position: relative;margin: 2% 20% 2% 20%">
-        <h1>BẢNG XẾP HẠNG</h1>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <mat-grid-list cols="3">
-    <mat-grid-tile rowspan="1">
-      <mat-card style="margin: 15px">
-        <div routerLink="/count"
-             style="width: 350px;height: 250px;background-image: url(https://1.bp.blogspot.com/-m_bpWFZecZI/Xn1_QqMRGoI/AAAAAAAAaFM/UXZR_p34rMED1ltE__9En8MQCg2aozQIgCLcBGAsYHQ/s1600/Nhung-hinh-anh-dep-nhat-the-gioi%2B%25282%2529.jpg)">
-          <mat-card style="text-align: center">
-            <h1>Nghe Nhiều Nhất</h1>
-          </mat-card>
-          <div>
-            <button mat-button style="position: relative; padding: 70px 150px">
-              <mat-icon style="font-size: 40px;color: white">play_circle_outline</mat-icon>
-            </button>
+<div style="background-image: url(https://wallpaper.dog/large/20459137.jpg)">
+  <div>
+    <mat-grid-list cols="1" rowHeight="100px">
+      <mat-grid-tile rowspan="1">
+        <mat-card style="position: relative;margin: 2% 20% 2% 20%">
+          <h1>BẢNG XẾP HẠNG</h1>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="3">
+      <mat-grid-tile rowspan="1">
+        <mat-card style="margin: 15px">
+          <div routerLink="/count"
+               style="width: 350px;height: 250px;background-image: url(https://anhdepfree.com/wp-content/uploads/2020/04/hinh-nen-do-3d.jpg)">
+            <mat-card style="text-align: center">
+              <h1>Nghe Nhiều Nhất</h1>
+            </mat-card>
+            <div>
+              <button mat-button style="position: relative; padding: 70px 150px">
+                <mat-icon style="font-size: 40px;color: white">play_circle_outline</mat-icon>
+              </button>
+            </div>
           </div>
-        </div>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile rowspan="1">
-      <mat-card style="margin: 15px">
-        <div routerLink="/like"
-          style="width: 350px;height: 250px;background-image: url(https://1.bp.blogspot.com/-wNFTCf0BHBs/XqRDSc43k6I/AAAAAAAAAt0/q0JXw9qtZxcMlUI2eTUZQaj_BwgE1SwNgCLcBGAsYHQ/s1600/top-hinh-nen-may-tinh-phong-canh-thien-nhien%2B%25283%2529.jpg)">
-          <mat-card style="text-align: center">
-            <h1>Yêu Thích Nhất</h1>
-          </mat-card>
-          <div>
-            <button mat-button style="position: relative; padding: 70px 150px">
-              <mat-icon style="font-size: 40px;color: white">play_circle_outline</mat-icon>
-            </button>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile rowspan="1">
+        <mat-card style="margin: 15px">
+          <div routerLink="/like"
+               style="width: 350px;height: 250px;background-image: url(https://photo2.tinhte.vn/data/attachment-files/2015/07/3096236_house_on_the_hill-wallpaper-1920x1080.jpg)">
+            <mat-card style="text-align: center">
+              <h1>Yêu Thích Nhất</h1>
+            </mat-card>
+            <div>
+              <button mat-button style="position: relative; padding: 70px 150px">
+                <mat-icon style="font-size: 40px;color: white">play_circle_outline</mat-icon>
+              </button>
+            </div>
           </div>
-        </div>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile rowspan="1">
-      <mat-card style="margin: 15px">
-        <div routerLink="/latest"
-          style="width: 350px;height: 250px;background-image: url(https://1.bp.blogspot.com/-TUvImkjsEeY/Xn1_YeholfI/AAAAAAAAaGk/0Zt6ef66OT8KHWQF9eHrgvRVX6LlvlRlgCLcBGAsYHQ/s1600/Nhung-hinh-anh-dep-nhat-the-gioi%2B%25284%2529.jpg)">
-          <mat-card style="text-align: center">
-            <h1>Mới Nhất</h1>
-          </mat-card>
-         <div>
-           <button mat-button style="position: relative; padding: 70px 150px">
-             <mat-icon style="font-size: 40px;color: white">play_circle_outline</mat-icon>
-           </button>
-         </div>
-        </div>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
-<div style="padding: 70px">
-  <mat-grid-list cols="1" rowHeight="50px">
-    <mat-grid-tile rowspan="1">
-      <mat-card>
-        <h1>PLAYLIST NỔI BẬT</h1>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <mat-grid-list cols="4" >
-    <mat-grid-tile colspan="1" rowspan="1" *ngFor="let p of allPlaylist">
-      <mat-card style="margin: 15px">
-        <app-list-play [playlist]="p" ></app-list-play>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile rowspan="1">
+        <mat-card style="margin: 15px">
+          <div routerLink="/latest"
+               style="width: 350px;height: 250px;background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20201024/pngtree-geometric-shape-yellow-background-design-image_435545.jpg)">
+            <mat-card style="text-align: center">
+              <h1>Mới Nhất</h1>
+            </mat-card>
+            <div>
+              <button mat-button style="position: relative; padding: 70px 150px">
+                <mat-icon style="font-size: 40px;color: white">play_circle_outline</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div style="padding: 70px">
+    <mat-grid-list cols="1" rowHeight="50px">
+      <mat-grid-tile rowspan="1">
+        <mat-card>
+          <h1>PLAYLIST NỔI BẬT</h1>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="4">
+      <mat-grid-tile colspan="1" rowspan="1" *ngFor="let p of allPlaylist">
+        <mat-card style="margin: 15px">
+          <app-list-play [playlist]="p"></app-list-play>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </div>

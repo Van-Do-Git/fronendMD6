@@ -1,28 +1,31 @@
-<button (click)="openDialog()" class="btn btn-success" style="position: absolute;right: 0">Tạo playlist mới</button>
-<div class="container" style="padding-top: 10%;padding-bottom: 10%">
-  <div class="row">
-    <div class="col-3" *ngFor="let p of playlists" style="text-align: center">
-      <mat-grid-list cols="3" style="text-align: center" rowHeight="250px">
 
-        <mat-grid-tile colspan="3">
-          <mat-card>
-            <div>
-              <img class="image" [src]="p.image.path">
-              <p>{{p.name}}</p>
-              <button mat-button>
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-button (click)="openDialog2(p.id)">
-                <mat-icon >delete</mat-icon>
-              </button>
-              <button mat-button [routerLink]="['/mylist/',p.id]">
-                <mat-icon >add</mat-icon>
-              </button>
-            </div>
-          </mat-card>
-        </mat-grid-tile>
+<div style="background-image: url(https://i.pinimg.com/originals/fc/1a/3b/fc1a3b18581199af69a990061b32f6bc.jpg);">
+  <button (click)="openDialog()" class="btn btn-outline-primary" style="position: absolute;right: 0">Tạo playlist mới</button>
+  <div class="container" style="padding-top: 10%;padding-bottom: 10%">
+    <div class="row">
+      <div class="col-3" *ngFor="let p of playlists" style="text-align: center">
+        <mat-grid-list cols="3" style="text-align: center" rowHeight="250px">
 
-      </mat-grid-list>
+          <mat-grid-tile colspan="3">
+            <mat-card>
+              <div>
+                <img class="image" [src]="p.image.path">
+                <p>{{p.name}}</p>
+                <button mat-button>
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button (click)="openDialog2(p.id)">
+                  <mat-icon >delete</mat-icon>
+                </button>
+                <button mat-button [routerLink]="['/mylist/',p.id]">
+                  <mat-icon >add</mat-icon>
+                </button>
+              </div>
+            </mat-card>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+      </div>
     </div>
   </div>
 </div>
