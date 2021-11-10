@@ -123,4 +123,7 @@ export class MusicService {
     console.log('co vao day ko?')
     return this.http.delete(this.API_SONG +'/unlike/'+idLike)
   }
+  deletePlaylist(id: any) {
+    return this.http.delete(this.API_CLIENT+'/deletePlaylist/'+ id)
+  }
 }
