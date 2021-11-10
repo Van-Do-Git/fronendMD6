@@ -125,4 +125,7 @@ export class MusicService {
   searchSongByNameOrSinger(value: any) {
     return this.http.post(this.API_CLIENT+'/search',value);
   }
+  deletePlaylist(id: any) {
+    return this.http.delete(this.API_CLIENT+'/deletePlaylist/'+ id)
+  }
 }
