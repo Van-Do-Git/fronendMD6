@@ -123,6 +123,14 @@ export class MusicService {
     return this.http.delete(this.API_SONG +'/unlike/'+idLike)
   }
   deletePlaylist(id: any) {
-    return this.http.delete(this.API_CLIENT+'/deletePlaylist/'+ id)
+    return this.http.delete(this.API_SONG+'/deletePlaylist/'+ id)
+  }
+
+  editProfile(newAccount: any) {
+    return this.http.put(this.API_SONG + '/editProfile',newAccount)
+  }
+
+  changePassword(newAccount: any) {
+    return this.http.put(this.API_SONG + '/changePassword',newAccount)
   }
 }

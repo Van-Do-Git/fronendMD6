@@ -47,6 +47,8 @@ import { ListPlayComponent } from './playlist/list-play/list-play.component';
 import { PlaylistClientComponent } from './playlist/playlist-client/playlist-client.component';
 import { PlaylistDialogComponent } from './playlist/list-play/playlist-dialog/playlist-dialog.component';
 import { SearchComponent } from './search/search.component';
+import { ChangePasswordComponent } from './navbar/change-password/change-password.component';
+import { EditProfileComponent } from './navbar/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { SearchComponent } from './search/search.component';
     ListPlayComponent,
     PlaylistClientComponent,
     PlaylistDialogComponent,
-    SearchComponent
+    SearchComponent,
+    ChangePasswordComponent,
+    EditProfileComponent
   ],
   imports: [
     MatInputModule,

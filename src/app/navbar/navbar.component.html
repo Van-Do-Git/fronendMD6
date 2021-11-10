@@ -3,13 +3,13 @@
     <img src="{{avartar}}" id="avatar">
     <button mat-button>{{fullnam}}</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="changePassword()">
         <mat-icon>create</mat-icon>
         <span>Đổi mật khẩu</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="editProfile()">
         <mat-icon>edit</mat-icon>
-        <span>Cập nhật profile</span>
+        <span>Cập nhật thông tin tài khoản</span>
       </button>
       <button mat-menu-item (click)="logout()">
         <mat-icon>logout</mat-icon>
@@ -18,22 +18,22 @@
     </mat-menu>
   </a>
   <a routerLink="">
-    <button mat-button>Home</button>
+    <button mat-button>Trang chủ</button>
   </a>
   <a routerLink="registry" *ngIf="!checklogin">
-    <button mat-button>Registry</button>
+    <button mat-button>Đăng ký tài khoản</button>
   </a>
   <a routerLink="login" *ngIf="!checklogin">
-    <button mat-button>Login</button>
+    <button mat-button>Đăng nhập</button>
   </a>
   <a routerLink="create-song" *ngIf="checklogin">
-    <button mat-button>Create Song</button>
+    <button mat-button>Tạo bài hát </button>
   </a>
   <a routerLink="songs" *ngIf="checklogin">
-    <button mat-button>My song list</button>
+    <button mat-button>Bài hát đã tạo</button>
   </a>
   <a routerLink="playlist" *ngIf="checklogin">
-    <button mat-button>My Playlist</button>
+    <button mat-button>Danh sách playlist</button>
   </a>
   <a>
     <form class="d-flex" [formGroup]="formdata" (ngSubmit)="onSubmit()">
@@ -41,9 +41,9 @@
         <option [value]=false>Ca sĩ</option>
         <option [value]=true>Bài hát</option>
       </select>
-      <input formControlName="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+      <input formControlName="name" class="form-control me-2" type="search" placeholder="Nhập tên cần tìm" aria-label="Search"
              style="width: 300px">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
     </form>
   </a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -51,6 +51,6 @@
   </a>
 </div>
 
-<app-search></app-search>
+<app-search style="display: none"></app-search>
 
 
