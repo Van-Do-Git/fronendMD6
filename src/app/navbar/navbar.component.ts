@@ -17,16 +17,23 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   fullnam: any;
   songs: any;
   isSearch = false;
+  isHome = true;
+  isRegistry = false;
+  isLogin = false;
+  isCreateSong = false;
+  isManagerSong = false;
+  isManagerPlaylist = false;
   public formdata = this.formBuilder.group({
     isNameOrSinger: ['', Validators.required],
     name: ['', Validators.required],
   })
 
 
-  constructor(private diaglog:MatDialog , private musicsv: MusicService, private r: Router, private formBuilder: FormBuilder) {
+  constructor(private diaglog: MatDialog, private musicsv: MusicService, private r: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.isHome = true;
     let idAcount = window.sessionStorage.getItem("ID_KEY");
     if (idAcount != null) {
       this.checklogin = true;
@@ -51,9 +58,15 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   logout() {
     window.sessionStorage.clear();
-    this.checklogin = false;
     this.r.navigate(['/']).then(() => {
-      window.location.reload()
+      window.location.reload();
+      this.checklogin = false;
+      this.isHome = true;
+      this.isManagerPlaylist = false;
+      this.isLogin = false;
+      this.isManagerSong = false;
+      this.isRegistry = false;
+      this.isCreateSong = false;
     });
   }
 
@@ -64,9 +77,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     })
     this.formdata.reset('');
   }
+
   changePassword() {
-    this.diaglog.open(ChangePasswordComponent, {
-    });
+    this.diaglog.open(ChangePasswordComponent, {});
   }
 
   closeSearch() {
@@ -79,5 +92,65 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(() => {
       this.showInFor();
     });
+  }
+
+  changeCss(number: number) {
+    switch (number) {
+      case 1:{
+        this.isHome = true;
+        this.isManagerPlaylist = false;
+        this.isLogin = false;
+        this.isManagerSong = false;
+        this.isRegistry = false;
+        this.isCreateSong = false;
+        break;
+      }
+      case 2:{
+        this.isHome = false;
+        this.isManagerPlaylist = false;
+        this.isLogin = false;
+        this.isManagerSong = false;
+        this.isRegistry = true;
+        this.isCreateSong = false;
+        break;
+      }
+      case 3:{
+        this.isHome = false;
+        this.isManagerPlaylist = false;
+        this.isLogin = true;
+        this.isManagerSong = false;
+        this.isRegistry = false;
+        this.isCreateSong = false;
+        break;
+      }
+      case 4:{
+        this.isHome = false;
+        this.isManagerPlaylist = false;
+        this.isLogin = false;
+        this.isManagerSong = false;
+        this.isRegistry = false;
+        this.isCreateSong = true;
+        break;
+      }
+      case 5:{
+        this.isHome = false;
+        this.isManagerPlaylist = false;
+        this.isLogin = false;
+        this.isManagerSong = true;
+        this.isRegistry = false;
+        this.isCreateSong = false;
+        break;
+      }
+      case 6:{
+        this.isHome = false;
+        this.isManagerPlaylist = true;
+        this.isLogin = false;
+        this.isManagerSong = false;
+        this.isRegistry = false;
+        this.isCreateSong = false;
+        break;
+      }
+
+    }
   }
 }

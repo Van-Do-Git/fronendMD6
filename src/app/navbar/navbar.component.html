@@ -1,20 +1,20 @@
 <div class="topnav" id="myTopnav">
-  <a routerLink="">
+  <a routerLink="" [ngClass]="{'onStay': isHome}" (click)="changeCss(1)">
     <button mat-button><mat-icon>home</mat-icon></button>
   </a>
-  <a routerLink="registry" *ngIf="!checklogin">
+  <a routerLink="registry" *ngIf="!checklogin" [ngClass]="{'onStay': isRegistry}" (click)="changeCss(2)">
     <button mat-button>Đăng ký</button>
   </a>
-  <a routerLink="login" *ngIf="!checklogin">
+  <a routerLink="login" *ngIf="!checklogin" [ngClass]="{'onStay': isLogin}" (click)="changeCss(3)">
     <button mat-button>Đăng nhập</button>
   </a>
-  <a routerLink="create-song" *ngIf="checklogin">
+  <a routerLink="create-song" *ngIf="checklogin" [ngClass]="{'onStay': isCreateSong}" (click)="changeCss(4)">
     <button mat-button>Đăng bài hát</button>
   </a>
-  <a routerLink="songs" *ngIf="checklogin">
+  <a routerLink="songs" *ngIf="checklogin" [ngClass]="{'onStay': isManagerSong}" (click)="changeCss(5)">
     <button mat-button>Quản lý bài hát</button>
   </a>
-  <a routerLink="playlist" *ngIf="checklogin">
+  <a routerLink="playlist" *ngIf="checklogin" [ngClass]="{'onStay': isManagerPlaylist}" (click)="changeCss(6)">
     <button mat-button>Quản lý playlist</button>
   </a>
   <a>

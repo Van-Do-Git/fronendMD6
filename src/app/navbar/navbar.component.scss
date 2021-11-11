@@ -6,7 +6,7 @@
 .topnav a {
   float: left;
   //display: block;
-  color: #f2f2f2;
+  color: #f50404;
   text-align: center;
   padding: 5px 5px;
   text-decoration: none;
@@ -15,6 +15,11 @@
 }
 
 .topnav a:hover {
+  background-color: #ddd;
+  color: #380707;
+}
+.onStay{
+  overflow: hidden;
   background-color: #ddd;
   color: #380707;
 }
