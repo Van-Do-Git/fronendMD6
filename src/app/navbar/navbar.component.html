@@ -21,7 +21,7 @@
     <button mat-button>Trang chủ</button>
   </a>
   <a routerLink="registry" *ngIf="!checklogin">
-    <button mat-button>Đăng ký tài khoản</button>
+    <button mat-button>Đăng ký</button>
   </a>
   <a routerLink="login" *ngIf="!checklogin">
     <button mat-button>Đăng nhập</button>
@@ -30,10 +30,10 @@
     <button mat-button>Tạo bài hát </button>
   </a>
   <a routerLink="songs" *ngIf="checklogin">
-    <button mat-button>Bài hát đã tạo</button>
+    <button mat-button>Bài hát</button>
   </a>
   <a routerLink="playlist" *ngIf="checklogin">
-    <button mat-button>Danh sách playlist</button>
+    <button mat-button>Playlist</button>
   </a>
   <a>
     <form class="d-flex" [formGroup]="formdata" (ngSubmit)="onSubmit()">
@@ -57,6 +57,5 @@
 </div>
 <app-search *ngIf="isSearch" [songs]="songs"></app-search>
 
-<app-search></app-search>
 
 

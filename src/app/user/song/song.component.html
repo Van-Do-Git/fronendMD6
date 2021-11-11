@@ -5,11 +5,11 @@
       <div style="margin-top: 20px;">
         <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Name Song</label>
+            <label for="exampleFormControlInput1" class="form-label">Tên bài hát</label>
             <input formControlName="name" type="text" class="form-control" id="exampleFormControlInput1">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput2" class="form-label">Name Singer</label>
+            <label for="exampleFormControlInput2" class="form-label">Tên ca sĩ</label>
             <input formControlName="singer" type="text" class="form-control" id="exampleFormControlInput2">
           </div>
           <div class="mb-3">
@@ -19,9 +19,9 @@
             <mat-progress-bar *ngIf="checkUploadFile" mode="indeterminate"></mat-progress-bar>
           </div>
           <br>
-          <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Create </button>
+          <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Tạo bài hát </button>
           &nbsp;
-          <button type="reset"  class="btn btn-warning" routerLink="/"> Cancel</button>
+          <button type="reset"  class="btn btn-warning" routerLink="/"> Huỷ</button>
         </form>
       </div>
     </div>
