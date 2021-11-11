@@ -3,11 +3,11 @@
     <img src="{{avartar}}" id="avatar">
     <button mat-button>{{fullnam}}</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="changePassword()">
         <mat-icon>create</mat-icon>
         <span>Đổi mật khẩu</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="editProfile()">
         <mat-icon>edit</mat-icon>
         <span>Cập nhật profile</span>
       </button>

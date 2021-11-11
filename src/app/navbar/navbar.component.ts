@@ -2,6 +2,9 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {MusicService} from "../service/music.service";
 import {Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
+import {ChangePasswordComponent} from "./change-password/change-password.component";
+import {MatDialog} from "@angular/material/dialog";
+import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +23,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   })
 
 
-  constructor(private musicsv: MusicService, private r: Router, private formBuilder: FormBuilder) {
+  constructor(private diaglog:MatDialog , private musicsv: MusicService, private r: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -61,9 +64,20 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     })
     this.formdata.reset('');
   }
+  changePassword() {
+    this.diaglog.open(ChangePasswordComponent, {
+    });
+  }
 
   closeSearch() {
     this.isSearch = false;
     this.songs = null;
+  }
+
+  editProfile() {
+    const dialogRef = this.diaglog.open(EditProfileComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.showInFor();
+    });
   }
 }

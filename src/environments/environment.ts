@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_LOCAL: 'https://mp3-zin.herokuapp.com',
+  API_LOCAL: 'http://localhost:8080',
   firebaseConfig : {
     apiKey: "AIzaSyAW8VF35-_YFnNNBMT9RAjzCHj-SUqR8Uw",
     authDomain: "filebase-70567.firebaseapp.com",

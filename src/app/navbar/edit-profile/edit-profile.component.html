@@ -1,0 +1,29 @@
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close><mat-icon style="color: red">cancel</mat-icon></button>
+</mat-dialog-actions>
+<div class="container" >
+  <div class="row">
+    <div class="col-12">
+      <div style="margin-top: 20px;">
+        <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Họ và Tên </label>
+            <input formControlName="fullName" type="text" class="form-control" id="exampleFormControlInput1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Địa chỉ</label>
+            <input formControlName="address" type="text" class="form-control" id="exampleFormControlInput2">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ảnh dại diện</label>
+            <input formControlName="path" type="text" [(ngModel)]="downloadURL" style="display: none">
+            <input type="file" class="form-control" (change)="onFileChanged($event)" accept="image/*">
+            <mat-progress-bar *ngIf="checkUploadFile" mode="indeterminate"></mat-progress-bar>
+          </div>
+          <br>
+          <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Cập nhật </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
