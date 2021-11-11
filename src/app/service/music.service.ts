@@ -126,7 +126,7 @@ export class MusicService {
     return this.http.post(this.API_CLIENT+'/search',value);
   }
   deletePlaylist(id: any) {
-    return this.http.delete(this.API_CLIENT+'/deletePlaylist/'+ id)
+    return this.http.delete(this.API_SONG+'/deletePlaylist/'+ id)
   }
 
   changePassword(newAccount: any) {
