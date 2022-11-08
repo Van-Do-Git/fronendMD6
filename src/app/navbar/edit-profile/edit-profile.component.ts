@@ -1,8 +1,4 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
-import {MusicService} from "../../service/music.service";
-import {Router} from "@angular/router";
-import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-edit-profile',

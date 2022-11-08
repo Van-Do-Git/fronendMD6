@@ -6,48 +6,48 @@
       <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
         <div class="mb-3">
           <mat-form-field style="width: 350px" appearance="outline">
-            <mat-label>Username: </mat-label>
-            <input formControlName="username"  matInput placeholder="Placeholder" minlength="3" maxlength="100" required>
+            <mat-label>Tên tài khoản: </mat-label>
+            <input formControlName="username"  matInput placeholder="Tên tài khoản" minlength="3" maxlength="100" required>
             <mat-icon matSuffix>person_outline</mat-icon>
-            <mat-error >The name is required!</mat-error>
+            <mat-error >Không được để trống</mat-error>
           </mat-form-field>
         </div>
         <div class="mb-3">
           <mat-form-field style="width: 350px" appearance="outline">
-            <mat-label>Full name: </mat-label>
-            <input formControlName="fullName" type="text" matInput placeholder="Placeholder"  required>
+            <mat-label>Họ và Tên </mat-label>
+            <input formControlName="fullName" type="text" matInput placeholder="Họ và tên"  required>
             <mat-icon matSuffix>info</mat-icon>
-            <mat-error >The full name is required!</mat-error>
+            <mat-error >Không được để trống</mat-error>
           </mat-form-field>
         </div>
         <div class="mb-3">
           <mat-form-field style="width: 350px" appearance="outline">
-            <mat-label>Password: </mat-label>
-            <input formControlName="password" type="password" matInput placeholder="Placeholder" minlength="6" maxlength="8" required>
+            <mat-label>Mật khẩu</mat-label>
+            <input formControlName="password" type="password" matInput placeholder="6 đến 8 ký tự" minlength="6" maxlength="8" required>
             <mat-icon matSuffix>password</mat-icon>
-            <mat-error >The password is required!</mat-error>
+            <mat-error >Không được để trống</mat-error>
           </mat-form-field>
         </div>
 
         <div class="mb-3">
           <mat-form-field style="width: 350px" appearance="outline">
-            <mat-label>Re-password: </mat-label>
-            <input formControlName="re_password" type="password"  matInput placeholder="Placeholder" minlength="6" maxlength="8" required>
+            <mat-label>Nhập lại mật khẩu</mat-label>
+            <input formControlName="re_password" type="password"  matInput placeholder="6 đến 8 ký tự" minlength="6" maxlength="8" required>
             <mat-icon matSuffix>password</mat-icon>
-            <mat-error >The re-password is required!</mat-error>
+            <mat-error >Không được để trống</mat-error>
           </mat-form-field>
         </div>
         <div class="mb-3">
           <mat-form-field style="width: 350px" appearance="outline">
-            <mat-label>Phone: </mat-label>
-            <input formControlName="phoneNumber" type="text"   matInput placeholder="Placeholder" minlength="3" maxlength="100" required>
+            <mat-label>Điện thoại </mat-label>
+            <input formControlName="phoneNumber" type="text"   matInput placeholder="Số điện thoại" minlength="3" maxlength="100" required>
             <mat-icon matSuffix>phone</mat-icon>
-            <mat-error >The phone is required!</mat-error>
+            <mat-error >Không được để trống</mat-error>
           </mat-form-field>
         </div>
-        <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Create</button>
+        <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Xác nhận</button>
         &nbsp;
-        <button type="reset"  class="btn btn-warning" routerLink="/"> Cancel</button>
+        <button type="reset"  class="btn btn-warning" routerLink="/"> &nbsp;&nbsp;&nbsp;Thoát  &nbsp;&nbsp;</button>
       </form>
     </div>
   </div>

@@ -13,17 +13,15 @@
             <input formControlName="singer" type="text" class="form-control" id="exampleFormControlInput2">
           </div>
           <div class="mb-3">
-            <label class="form-label">File mp3</label>
+            <label class="form-label" for="image">File mp3</label>
             <input formControlName="path" type="text" [(ngModel)]="downloadURL" style="display: none">
-            <input type="file" class="form-control" (change)="onFileChanged($event)" accept="audio/*">
+            <input type="file" class="form-control" (change)="onFileChanged($event)" accept="audio/*" id="image">
             <mat-progress-bar *ngIf="checkUploadFile" mode="indeterminate"></mat-progress-bar>
           </div>
           <br>
-          <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Tạo bài hát </button>
-          &nbsp;
-          <button type="reset"  class="btn btn-warning" routerLink="/"> Huỷ</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+

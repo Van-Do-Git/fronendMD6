@@ -3,9 +3,6 @@ import {MusicService} from "../service/music.service";
 import {Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ChangePasswordComponent} from "./change-password/change-password.component";
-import {EditProfileComponent} from "./edit-profile/edit-profile.component";
-import {MatDialog} from "@angular/material/dialog";
-import {CreatlistComponent} from "../user/mylist/creatlist/creatlist.component";
 
 @Component({
   selector: 'app-navbar',
@@ -18,15 +15,20 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   fullnam: any;
   songs: any;
   isSearch = false;
+  isHome = true;
+  isRegistry = false;
+  isLogin = false;
+  isCreateSong = false;
+  isManagerSong = false;
+  isManagerPlaylist = false;
   public formdata = this.formBuilder.group({
     isNameOrSinger: ['', Validators.required],
     name: ['', Validators.required],
   })
-
-  constructor(public dialog: MatDialog,private musicsv: MusicService, private r: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.isHome = true;
     let idAcount = window.sessionStorage.getItem("ID_KEY");
     if (idAcount != null) {
       this.checklogin = true;
@@ -51,9 +53,15 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   logout() {
     window.sessionStorage.clear();
-    this.checklogin = false;
     this.r.navigate(['/']).then(() => {
-      window.location.reload()
+      window.location.reload();
+      this.checklogin = false;
+      this.isHome = true;
+      this.isManagerPlaylist = false;
+      this.isLogin = false;
+      this.isManagerSong = false;
+      this.isRegistry = false;
+      this.isCreateSong = false;
     });
   }
 
@@ -65,20 +73,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.formdata.reset('');
   }
 
+  changePassword() {
+    this.diaglog.open(ChangePasswordComponent, {});
+  }
+
   closeSearch() {
     this.isSearch = false;
     this.songs = null;
   }
 
-  changePassword() {
-    this.dialog.open(ChangePasswordComponent, {
-    });
-  }
-
-  editProfile() {
-    const dialogRef = this.dialog.open(EditProfileComponent);
-    dialogRef.afterClosed().subscribe(() => {
-      this.showInFor();
-    });
-  }
 }

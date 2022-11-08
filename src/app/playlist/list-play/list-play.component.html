@@ -16,8 +16,8 @@
     </div>
     <div class="col-3">
       <button mat-button *ngIf="checklogin" style="position: relative; ;top: -6px">
-        <mat-icon *ngIf="!liked" (click)="likeThis(playlist.id)" color="primary">favorite</mat-icon>
-        <mat-icon *ngIf="liked" (click)="unLikeThis(playlist.id)" color="accent">favorite</mat-icon>
+        <mat-icon *ngIf="!liked" (click)="likeThis(playlist.id)" color="primary" title="Thích">favorite</mat-icon>
+        <mat-icon *ngIf="liked" (click)="unLikeThis(playlist.id)" color="accent" title="Bỏ thích">favorite</mat-icon>
       </button>
     </div>
     <div class="col-2">

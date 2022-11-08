@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+
 import {MusicService} from "../../service/music.service";
 
 @Component({
@@ -15,9 +13,7 @@ export class ChangePasswordComponent implements OnInit {
     newPassword: ['', Validators.required],
   })
   public newAccount: any;
-  private idAccounts: any;
 
-  constructor(private afStorage: AngularFireStorage, private formBuilder: FormBuilder, private musicsv: MusicService) {
   }
 
   onSubmit() {
@@ -39,6 +35,4 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-
 }
