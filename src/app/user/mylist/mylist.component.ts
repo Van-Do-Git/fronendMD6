@@ -42,8 +42,6 @@ export class MylistComponent implements OnInit {
   openDialog2(idPlaylist: any) {
     const dialogRef = this.dialog.open(DeleteComponent);
     dialogRef.afterClosed().subscribe(resulf => {
-      if (resulf) {
-        this.musicSv.deletePlaylist(idPlaylist).subscribe(() => {
           this.reloadPage();
         });
       }

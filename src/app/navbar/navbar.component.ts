@@ -3,8 +3,6 @@ import {MusicService} from "../service/music.service";
 import {Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ChangePasswordComponent} from "./change-password/change-password.component";
-import {MatDialog} from "@angular/material/dialog";
-import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 
 @Component({
   selector: 'app-navbar',
@@ -27,9 +25,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     isNameOrSinger: ['', Validators.required],
     name: ['', Validators.required],
   })
-
-
-  constructor(private diaglog: MatDialog, private musicsv: MusicService, private r: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -87,70 +82,4 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.songs = null;
   }
 
-  editProfile() {
-    const dialogRef = this.diaglog.open(EditProfileComponent);
-    dialogRef.afterClosed().subscribe(() => {
-      this.showInFor();
-    });
-  }
-
-  changeCss(number: number) {
-    switch (number) {
-      case 1:{
-        this.isHome = true;
-        this.isManagerPlaylist = false;
-        this.isLogin = false;
-        this.isManagerSong = false;
-        this.isRegistry = false;
-        this.isCreateSong = false;
-        break;
-      }
-      case 2:{
-        this.isHome = false;
-        this.isManagerPlaylist = false;
-        this.isLogin = false;
-        this.isManagerSong = false;
-        this.isRegistry = true;
-        this.isCreateSong = false;
-        break;
-      }
-      case 3:{
-        this.isHome = false;
-        this.isManagerPlaylist = false;
-        this.isLogin = true;
-        this.isManagerSong = false;
-        this.isRegistry = false;
-        this.isCreateSong = false;
-        break;
-      }
-      case 4:{
-        this.isHome = false;
-        this.isManagerPlaylist = false;
-        this.isLogin = false;
-        this.isManagerSong = false;
-        this.isRegistry = false;
-        this.isCreateSong = true;
-        break;
-      }
-      case 5:{
-        this.isHome = false;
-        this.isManagerPlaylist = false;
-        this.isLogin = false;
-        this.isManagerSong = true;
-        this.isRegistry = false;
-        this.isCreateSong = false;
-        break;
-      }
-      case 6:{
-        this.isHome = false;
-        this.isManagerPlaylist = true;
-        this.isLogin = false;
-        this.isManagerSong = false;
-        this.isRegistry = false;
-        this.isCreateSong = false;
-        break;
-      }
-
-    }
-  }
 }

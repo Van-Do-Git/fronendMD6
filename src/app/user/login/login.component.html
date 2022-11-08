@@ -5,16 +5,12 @@
       <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
         <div class="mb-3">
           <mat-form-field style="width: 350px" appearance="outline">
-            <mat-label>Tài khoản </mat-label>
-            <input formControlName="username"  matInput placeholder="Tài khoản" minlength="3" maxlength="100" required>
             <mat-icon matSuffix>person_outline</mat-icon>
             <mat-error >Không được để trống</mat-error>
           </mat-form-field>
         </div>
         <div class="mb-3">
           <mat-form-field style="width: 350px" appearance="outline">
-            <mat-label>Mật khẩu </mat-label>
-            <input formControlName="password"  matInput placeholder="Mật khẩu" minlength="3" maxlength="100" required>
             <mat-icon matSuffix>password</mat-icon>
             <mat-error >Không được để trống</mat-error>
           </mat-form-field>
@@ -22,7 +18,6 @@
         <br>
         <button type="submit" [disabled]="!formdata.valid" class="btn btn-success">Đăng nhập</button>
         &nbsp;
-        <button type="reset" class="btn btn-warning" routerLink="/">&nbsp;&nbsp;&nbsp;&nbsp; Thoát&nbsp;&nbsp;&nbsp;&nbsp;  </button>
       </form>
     </div>
   </div>

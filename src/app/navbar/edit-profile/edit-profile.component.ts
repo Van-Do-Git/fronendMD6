@@ -1,7 +1,4 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/compat/storage";
-import {FormBuilder, Validators} from "@angular/forms";
-import {MusicService} from "../../service/music.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -9,7 +6,6 @@ import {MusicService} from "../../service/music.service";
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-
   selectedFile: File | undefined;
   ref: AngularFireStorageReference | undefined;
   downloadURL: string | undefined;

@@ -1,21 +1,4 @@
 <div class="topnav" id="myTopnav">
-  <a routerLink="" [ngClass]="{'onStay': isHome}" (click)="changeCss(1)">
-    <button mat-button><mat-icon>home</mat-icon></button>
-  </a>
-  <a routerLink="registry" *ngIf="!checklogin" [ngClass]="{'onStay': isRegistry}" (click)="changeCss(2)">
-    <button mat-button>Đăng ký</button>
-  </a>
-  <a routerLink="login" *ngIf="!checklogin" [ngClass]="{'onStay': isLogin}" (click)="changeCss(3)">
-    <button mat-button>Đăng nhập</button>
-  </a>
-  <a routerLink="create-song" *ngIf="checklogin" [ngClass]="{'onStay': isCreateSong}" (click)="changeCss(4)">
-    <button mat-button>Đăng bài hát</button>
-  </a>
-  <a routerLink="songs" *ngIf="checklogin" [ngClass]="{'onStay': isManagerSong}" (click)="changeCss(5)">
-    <button mat-button>Quản lý bài hát</button>
-  </a>
-  <a routerLink="playlist" *ngIf="checklogin" [ngClass]="{'onStay': isManagerPlaylist}" (click)="changeCss(6)">
-    <button mat-button>Quản lý playlist</button>
   </a>
   <a>
     <form class="d-flex" [formGroup]="formdata" (ngSubmit)="onSubmit()" style="margin: -3px">
@@ -23,9 +6,6 @@
         <option [value]="true" selected="selected">Bài hát</option>
         <option [value]="false">Ca sĩ</option>
       </select>
-      <input formControlName="name" class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search"
-             style="width: 300px">
-      <button class="btn btn-outline-success" type="submit"><mat-icon>search</mat-icon></button>
     </form>
   </a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
